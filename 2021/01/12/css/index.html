@@ -234,15 +234,14 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/*#是id选择器*/</span><br><span class="hljs-selector-id">#para1</span><br>&#123;<br>    <span class="hljs-attribute">text-align</span>:center;<br>    <span class="hljs-attribute">color</span>:red;<br>&#125;<br><span class="hljs-comment">/* ID属性不要以数字开头，数字开头的ID在 Mozilla/Firefox 浏览器中不起作用。*/</span><br></code></pre></td></tr></table></figure>
 <h2 id="CSS创建"><a href="#CSS创建" class="headerlink" title="CSS创建"></a>CSS创建</h2><h3 id="外部样式表"><a href="#外部样式表" class="headerlink" title="外部样式表"></a>外部样式表</h3><p>即从外部引入</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;<span class="hljs-selector-tag">head</span>&gt;<br>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot;&gt;<br>&lt;/<span class="hljs-selector-tag">head</span>&gt;<br><span class="hljs-comment">/*浏览器会从文件 mystyle.css 中读到样式声明，并根据它来格式文档。外部样式表可以在任何文本编辑器中进行编辑。文件不能包含任何的 html 标签。样式表应该以 .css 扩展名进行保存。*/</span><br></code></pre></td></tr></table></figure>
-<h3 id="内部样式表"><a href="#内部样式表" class="headerlink" title="内部样式表"></a>内部样式表</h3><p>当单个文档需要特殊的样式时，就应该使用内部样式表。你可以使用 <style> 标签在文档头部定义内部样式表，就像这样:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br><span class="css"><span class="hljs-selector-tag">hr</span> &#123;<span class="hljs-attribute">color</span>:sienna;&#125;</span><br><span class="css"><span class="hljs-selector-tag">p</span> &#123;<span class="hljs-attribute">margin-left</span>:<span class="hljs-number">20px</span>;&#125;</span><br><span class="css"><span class="hljs-selector-tag">body</span> &#123;<span class="hljs-attribute">background-image</span>:<span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;images/back40.gif&quot;</span>);&#125;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="内部样式表"><a href="#内部样式表" class="headerlink" title="内部样式表"></a>内部样式表</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br><span class="css"><span class="hljs-selector-tag">hr</span> &#123;<span class="hljs-attribute">color</span>:sienna;&#125;</span><br><span class="css"><span class="hljs-selector-tag">p</span> &#123;<span class="hljs-attribute">margin-left</span>:<span class="hljs-number">20px</span>;&#125;</span><br><span class="css"><span class="hljs-selector-tag">body</span> &#123;<span class="hljs-attribute">background-image</span>:<span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;images/back40.gif&quot;</span>);&#125;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
 <h3 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h3><p>由于要将表现和内容混杂在一起，内联样式会损失掉样式表的许多优势。请慎用这种方法，例如当样式仅需要在一个元素上应用一次时。要使用内联样式，你需要在相关的标签内使用样式（style）属性。Style 属性可以包含任何 CSS 属性。本例展示如何改变段落的颜色和左外边距：</p>
 <p><code>&lt;p style=&quot;color:sienna;margin-left:20px&quot;&gt;这是一个段落。&lt;/p&gt;</code></p>
-<p>##多重样式优先级（！！！重要）</p>
-<p><strong>内联样式）Inline style &gt; （内部样式）Internal style sheet &gt;（外部样式）External style sheet &gt; 浏览器默认样式</strong></p>
+<h2 id="多重样式优先级（！！！重要）"><a href="#多重样式优先级（！！！重要）" class="headerlink" title="多重样式优先级（！！！重要）"></a>多重样式优先级（！！！重要）</h2><p><strong>内联样式）Inline style &gt; （内部样式）Internal style sheet &gt;（外部样式）External style sheet &gt; 浏览器默认样式</strong></p>
 <p>优先级是浏览器是通过判断哪些属性值与元素最相关以决定并应用到该元素上的。优先级仅由选择器组成的匹配规则决定的。优先级就是分配给指定的CSS声明的一个权重，它由匹配的选择器中的每一种选择器类型的数值决定。</p>
-<p>###css 7 种选择器：</p>
-<ul>
+<h3 id="css-7-种选择器："><a href="#css-7-种选择器：" class="headerlink" title="css 7 种选择器："></a>css 7 种选择器：</h3><ul>
 <li>id选择器</li>
 <li>类选择器</li>
 <li>伪类选择器</li>
@@ -276,8 +275,7 @@
 <li>E 在同一组属性设置中标有“!important”规则的优先级最大；示例如下：<a target="_blank" rel="noopener" href="https://c.runoob.com/codedemo/3049">https://c.runoob.com/codedemo/3049</a><br> 结果：在Firefox 下显示为蓝色；在IE 6 下显示为红色；</li>
 </ul>
 <p><img src="https://www.runoob.com/wp-content/uploads/2017/06/css_weight.png" srcset="/img/loading.gif" alt="img"></p>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>###所以css背景属性</p>
-<table>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h3 id="所以css背景属性"><a href="#所以css背景属性" class="headerlink" title="所以css背景属性"></a>所以css背景属性</h3><table>
 <thead>
 <tr>
 <th><a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/css3-pr-background.html">background</a></th>
