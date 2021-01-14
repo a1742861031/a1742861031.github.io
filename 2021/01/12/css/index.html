@@ -309,8 +309,7 @@
 <h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="文本的对齐方式"><a href="#文本的对齐方式" class="headerlink" title="文本的对齐方式"></a>文本的对齐方式</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">h1</span> &#123;<span class="hljs-attribute">text-align</span>:center;&#125; <span class="hljs-comment">/*标题居中*/</span><br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.date</span> &#123;<span class="hljs-attribute">text-align</span>:right;&#125;<span class="hljs-comment">/*时间居右*/</span><br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.main</span> &#123;<span class="hljs-attribute">text-align</span>:justify;&#125;<span class="hljs-comment">/*左右外边距对其*/</span><br></code></pre></td></tr></table></figure>
 <h3 id="文本修饰"><a href="#文本修饰" class="headerlink" title="文本修饰"></a>文本修饰</h3><p>text-decoration 属性用来设置或删除文本的装饰。从设计的角度看 text-decoration属性主要是用来删除链接的下划线：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">a</span> &#123;<span class="hljs-attribute">text-decoration</span>:none;&#125; <span class="hljs-comment">/*删除下划线*/</span><br><span class="hljs-selector-tag">h1</span> &#123;<span class="hljs-attribute">text-decoration</span>:overline;&#125;<span class="hljs-comment">/*居上线*/</span><br><span class="hljs-selector-tag">h2</span> &#123;<span class="hljs-attribute">text-decoration</span>:line-through;&#125;<span class="hljs-comment">/*冲过中间线*/</span><br><span class="hljs-selector-tag">h3</span> &#123;<span class="hljs-attribute">text-decoration</span>:underline;&#125;<span class="hljs-comment">/*下划线*/</span><br></code></pre></td></tr></table></figure>
-<p>###文本转换</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.uppercase</span> &#123;<span class="hljs-attribute">text-transform</span>:uppercase;&#125; <span class="hljs-comment">/*大写*/</span><br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.lowercase</span> &#123;<span class="hljs-attribute">text-transform</span>:lowercase;&#125;<span class="hljs-comment">/*小写*/</span><br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.capitalize</span> &#123;<span class="hljs-attribute">text-transform</span>:capitalize;&#125;<span class="hljs-comment">/*首字母大写*/</span><br></code></pre></td></tr></table></figure>
+<h3 id="文本转换"><a href="#文本转换" class="headerlink" title="文本转换"></a>文本转换</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.uppercase</span> &#123;<span class="hljs-attribute">text-transform</span>:uppercase;&#125; <span class="hljs-comment">/*大写*/</span><br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.lowercase</span> &#123;<span class="hljs-attribute">text-transform</span>:lowercase;&#125;<span class="hljs-comment">/*小写*/</span><br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.capitalize</span> &#123;<span class="hljs-attribute">text-transform</span>:capitalize;&#125;<span class="hljs-comment">/*首字母大写*/</span><br></code></pre></td></tr></table></figure>
 <h3 id="文本缩进"><a href="#文本缩进" class="headerlink" title="文本缩进"></a>文本缩进</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span> &#123;<span class="hljs-attribute">text-indent</span>:<span class="hljs-number">50px</span>;&#125; <span class="hljs-comment">/*第一行缩进50px*/</span><br></code></pre></td></tr></table></figure>
 <h3 id="所有css文本属性"><a href="#所有css文本属性" class="headerlink" title="所有css文本属性"></a>所有css文本属性</h3><table>
 <thead>
@@ -356,8 +355,7 @@
 <td>设置或返回文本是否被重写</td>
 </tr>
 </tbody></table>
-<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p>###字体属性</p>
-<table>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><h3 id="字体属性"><a href="#字体属性" class="headerlink" title="字体属性"></a>字体属性</h3><table>
 <thead>
 <tr>
 <th><a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/pr-font-font.html">font</a></th>
@@ -429,10 +427,8 @@
 <p>300px (宽)<br>+ 50px (左 + 右填充)<br>+ 50px (左 + 右边框)<br>+ 50px (左 + 右边距)<br>= 450px</p>
 <p>最终元素的总宽度计算公式是这样的：总元素的宽度=宽度+左填充+右填充+左边框+右边框+左边距+右边距</p>
 <p>元素的总高度最终计算公式是这样的：总元素的高度=高度+顶部填充+底部填充+上边框+下边框+上边距+下边距</p>
-<h2 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h2><p>###border-style :</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">none:</span> 默认无边框<br><span class="hljs-symbol">dotted:</span> 定义一个点线边框<br><span class="hljs-symbol">solid:</span> 定义实线边框<br><span class="hljs-symbol">double:</span> 定义两个边框。 两个边框的宽度和 border-width 的值相同<br><span class="hljs-symbol">groove:</span> 定义<span class="hljs-number">3</span>D沟槽边框。效果取决于边框的颜色值<br><span class="hljs-symbol">ridge:</span> 定义<span class="hljs-number">3</span>D脊边框。效果取决于边框的颜色值<br><span class="hljs-symbol">inset:</span>定义一个<span class="hljs-number">3</span>D的嵌入边框。效果取决于边框的颜色值<br><span class="hljs-symbol">outset:</span> 定义一个<span class="hljs-number">3</span>D突出边框。 效果取决于边框的颜色值<br></code></pre></td></tr></table></figure>
-<p>###边框属性</p>
-<table>
+<h2 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h2><h3 id="border-style"><a href="#border-style" class="headerlink" title="border-style :"></a>border-style :</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">none:</span> 默认无边框<br><span class="hljs-symbol">dotted:</span> 定义一个点线边框<br><span class="hljs-symbol">solid:</span> 定义实线边框<br><span class="hljs-symbol">double:</span> 定义两个边框。 两个边框的宽度和 border-width 的值相同<br><span class="hljs-symbol">groove:</span> 定义<span class="hljs-number">3</span>D沟槽边框。效果取决于边框的颜色值<br><span class="hljs-symbol">ridge:</span> 定义<span class="hljs-number">3</span>D脊边框。效果取决于边框的颜色值<br><span class="hljs-symbol">inset:</span>定义一个<span class="hljs-number">3</span>D的嵌入边框。效果取决于边框的颜色值<br><span class="hljs-symbol">outset:</span> 定义一个<span class="hljs-number">3</span>D突出边框。 效果取决于边框的颜色值<br></code></pre></td></tr></table></figure>
+<h3 id="边框属性"><a href="#边框属性" class="headerlink" title="边框属性"></a>边框属性</h3><table>
 <thead>
 <tr>
 <th align="left">属性</th>
@@ -523,8 +519,7 @@
 <h2 id="轮廓outline"><a href="#轮廓outline" class="headerlink" title="轮廓outline"></a>轮廓outline</h2><p>轮廓（outline）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。</p>
 <p>CSS outline 属性规定元素轮廓的样式、颜色和宽度。</p>
 <p><img src="https://www.runoob.com/images/box_outline.gif" srcset="/img/loading.gif" alt="Outline"></p>
-<p>##外边距margin</p>
-<p><img src="https://www.runoob.com/wp-content/uploads/2013/08/VlwVi.png" srcset="/img/loading.gif" alt="img"></p>
+<h2 id="外边距margin"><a href="#外边距margin" class="headerlink" title="外边距margin"></a>外边距margin</h2><p><img src="https://www.runoob.com/wp-content/uploads/2013/08/VlwVi.png" srcset="/img/loading.gif" alt="img"></p>
 <table>
 <thead>
 <tr>
@@ -580,8 +575,7 @@
 <td>使用百分比值定义一个填充</td>
 </tr>
 </tbody></table>
-<h2 id="分组嵌套选择器"><a href="#分组嵌套选择器" class="headerlink" title="分组嵌套选择器"></a>分组嵌套选择器</h2><p>###分组</p>
-<p>具有相同样式的元素</p>
+<h2 id="分组嵌套选择器"><a href="#分组嵌套选择器" class="headerlink" title="分组嵌套选择器"></a>分组嵌套选择器</h2><h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><p>具有相同样式的元素</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">h1</span><br>&#123;<br>    <span class="hljs-attribute">color</span>:green;<br>&#125;<br><span class="hljs-selector-tag">h2</span><br>&#123;<br>    <span class="hljs-attribute">color</span>:green;<br>&#125;<br><span class="hljs-selector-tag">p</span><br>&#123;<br>    <span class="hljs-attribute">color</span>:green;<br>&#125;<br><span class="hljs-comment">/*为了尽量减少代码，你可以使用分组选择器。每个选择器用逗号分隔。在下面的例子中，我们对以上代码使用分组选择器：*/</span><br><span class="hljs-selector-tag">h1</span>,<span class="hljs-selector-tag">h2</span>,<span class="hljs-selector-tag">p</span><br>&#123;<br>    <span class="hljs-attribute">color</span>:green;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h3><p>它可能适用于选择器内部的选择器的样式。</p>
 <p>在下面的例子设置了三个样式：</p>
