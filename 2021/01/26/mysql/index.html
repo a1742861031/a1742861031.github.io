@@ -1,0 +1,648 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yanbo">
+  <meta name="keywords" content="">
+  <title>Mysql基础(持续更新) - bobooo的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":5000000000,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>波波的blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Mysql基础(持续更新)">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-26 15:21" pubdate>
+        2021年1月26日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      32
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Mysql基础(持续更新)</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Mysql学习笔记"><a href="#Mysql学习笔记" class="headerlink" title="Mysql学习笔记"></a>Mysql学习笔记</h1><p>Mysql是一种关系型数据库</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 登录数据库 <br>mysql -uroot -p&quot;your password&quot;<br>-- 查看数据库<br>show databases<br>-- 操作数据库<br>use 数据库名<br>-- 退出数据库<br>exit;<br>-- 创建数据库<br>creat database test<br>-- 查看数据库中所以数据表<br>show tables<br>-- 创建数据表<br>CREATE TABLE pet (<br>    name VARCHAR(20),<br>    owner VARCHAR(20),<br>    species VARCHAR(20),<br>    sex CHAR(1),<br>    birth DATE,<br>    death DATE<br>);<br>-- 查看数据表的详细结构<br>describe pet;<br>-- 往数据表中添加数据<br>INSERT INTO pet values(&#39;puff&#39;,&#39;bobo&#39;,&#39;dog&#39;,&#39;m&#39;,&#39;1999-03-30&#39;,NULL);<br>-- 删除数据<br>delete from pet where name &#x3D; &#39;puff&#39;<br>-- 修改数据<br>update pet set name&#x3D;&quot;clear_puff&quot; where owner&#x3D;&quot;bobo&quot;;<br>-- 查看数据<br>select * from pet<br></code></pre></td></tr></table></figure>
+<h2 id="MySQL常用数据类型"><a href="#MySQL常用数据类型" class="headerlink" title="MySQL常用数据类型"></a>MySQL常用数据类型</h2><p>大致支持数值 日期/事件 字符串类型</p>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">大小</th>
+<th align="left">范围（有符号）</th>
+<th align="left">范围（无符号）</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">TINYINT</td>
+<td align="left">1 byte</td>
+<td align="left">(-128，127)</td>
+<td align="left">(0，255)</td>
+<td align="left">小整数值</td>
+</tr>
+<tr>
+<td align="left">SMALLINT</td>
+<td align="left">2 bytes</td>
+<td align="left">(-32 768，32 767)</td>
+<td align="left">(0，65 535)</td>
+<td align="left">大整数值</td>
+</tr>
+<tr>
+<td align="left">MEDIUMINT</td>
+<td align="left">3 bytes</td>
+<td align="left">(-8 388 608，8 388 607)</td>
+<td align="left">(0，16 777 215)</td>
+<td align="left">大整数值</td>
+</tr>
+<tr>
+<td align="left"><strong>INT或INTEGER</strong></td>
+<td align="left">4 bytes</td>
+<td align="left">(-2 147 483 648，2 147 483 647)</td>
+<td align="left">(0，4 294 967 295)</td>
+<td align="left">大整数值</td>
+</tr>
+<tr>
+<td align="left">BIGINT</td>
+<td align="left">8 bytes</td>
+<td align="left">(-9,223,372,036,854,775,808，9 223 372 036 854 775 807)</td>
+<td align="left">(0，18 446 744 073 709 551 615)</td>
+<td align="left">极大整数值</td>
+</tr>
+<tr>
+<td align="left"><strong>FLOAT</strong></td>
+<td align="left">4 bytes</td>
+<td align="left">(-3.402 823 466 E+38，-1.175 494 351 E-38)，0，(1.175 494 351 E-38，3.402 823 466 351 E+38)</td>
+<td align="left">0，(1.175 494 351 E-38，3.402 823 466 E+38)</td>
+<td align="left">单精度 浮点数值</td>
+</tr>
+<tr>
+<td align="left"><strong>DOUBLE</strong></td>
+<td align="left">8 bytes</td>
+<td align="left">(-1.797 693 134 862 315 7 E+308，-2.225 073 858 507 201 4 E-308)，0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td>
+<td align="left">0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td>
+<td align="left">双精度 浮点数值</td>
+</tr>
+<tr>
+<td align="left">DECIMAL</td>
+<td align="left">对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2</td>
+<td align="left">依赖于M和D的值</td>
+<td align="left">依赖于M和D的值</td>
+<td align="left">小数值</td>
+</tr>
+</tbody></table>
+<h3 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h3><h3 id="事件-日期类型"><a href="#事件-日期类型" class="headerlink" title="事件/日期类型"></a>事件/日期类型</h3><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">大小 ( bytes)</th>
+<th align="left">范围</th>
+<th align="left">格式</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>DATE</strong></td>
+<td align="left">3</td>
+<td align="left">1000-01-01/9999-12-31</td>
+<td align="left">YYYY-MM-DD</td>
+<td align="left">日期值</td>
+</tr>
+<tr>
+<td align="left"><strong>TIME</strong></td>
+<td align="left">3</td>
+<td align="left">‘-838:59:59’/‘838:59:59’</td>
+<td align="left">HH:MM:SS</td>
+<td align="left">时间值或持续时间</td>
+</tr>
+<tr>
+<td align="left"><strong>YEAR</strong></td>
+<td align="left">1</td>
+<td align="left">1901/2155</td>
+<td align="left">YYYY</td>
+<td align="left">年份值</td>
+</tr>
+<tr>
+<td align="left"><strong>DATETIME</strong></td>
+<td align="left">8</td>
+<td align="left">1000-01-01 00:00:00/9999-12-31 23:59:59</td>
+<td align="left">YYYY-MM-DD HH:MM:SS</td>
+<td align="left">混合日期和时间值</td>
+</tr>
+<tr>
+<td align="left"><strong>TIMESTAMP</strong></td>
+<td align="left">4</td>
+<td align="left">1970-01-01 00:00:00/2038结束时间是第 <strong>2147483647</strong> 秒，北京时间 <strong>2038-1-19 11:14:07</strong>，格林尼治时间 2038年1月19日 凌晨 03:14:07</td>
+<td align="left">YYYYMMDD HHMMSS</td>
+<td align="left">混合日期和时间值，时间戳</td>
+</tr>
+</tbody></table>
+<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">大小</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>CHAR</strong></td>
+<td align="left">0-255 bytes</td>
+<td align="left">定长字符串</td>
+</tr>
+<tr>
+<td align="left"><strong>VARCHAR</strong></td>
+<td align="left">0-65535 bytes</td>
+<td align="left">变长字符串</td>
+</tr>
+<tr>
+<td align="left">TINYBLOB</td>
+<td align="left">0-255 bytes</td>
+<td align="left">不超过 255 个字符的二进制字符串</td>
+</tr>
+<tr>
+<td align="left">TINYTEXT</td>
+<td align="left">0-255 bytes</td>
+<td align="left">短文本字符串</td>
+</tr>
+<tr>
+<td align="left">BLOB</td>
+<td align="left">0-65 535 bytes</td>
+<td align="left">二进制形式的长文本数据</td>
+</tr>
+<tr>
+<td align="left"><strong>TEXT</strong></td>
+<td align="left">0-65 535 bytes</td>
+<td align="left">长文本数据</td>
+</tr>
+<tr>
+<td align="left">MEDIUMBLOB</td>
+<td align="left">0-16 777 215 bytes</td>
+<td align="left">二进制形式的中等长度文本数据</td>
+</tr>
+<tr>
+<td align="left">MEDIUMTEXT</td>
+<td align="left">0-16 777 215 bytes</td>
+<td align="left">中等长度文本数据</td>
+</tr>
+<tr>
+<td align="left">LONGBLOB</td>
+<td align="left">0-4 294 967 295 bytes</td>
+<td align="left">二进制形式的极大文本数据</td>
+</tr>
+<tr>
+<td align="left">LONGTEXT</td>
+<td align="left">0-4 294 967 295 bytes</td>
+<td align="left">极大文本数据</td>
+</tr>
+</tbody></table>
+<h2 id="mysql-建表约束"><a href="#mysql-建表约束" class="headerlink" title="mysql 建表约束"></a>mysql 建表约束</h2><h3 id="主键约束"><a href="#主键约束" class="headerlink" title="主键约束"></a>主键约束</h3><h4 id="primary-key"><a href="#primary-key" class="headerlink" title="primary key"></a>primary key</h4><p>值唯一且不为空，用它就能确定一张表的一条记录，例如学生的学号唯一的且不为空</p>
+<h4 id="联合主键"><a href="#联合主键" class="headerlink" title="联合主键"></a>联合主键</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table user2(<br>    id int,<br>    name varchar(20),<br>    password varchar(20),<br>    primary key(id,name)<br>);<br>-- 联合主键只要两个加起来不相等就可以，例如,即id，name不能都相同，但联合主键任何组件都不能为空<br>insert into user2 value(1,&#39;张三&#39;，&#39;123&#39;)<br>insert into user2 value(1，&#39;李四&#39;,&#39;123&#39;)<br></code></pre></td></tr></table></figure>
+<h4 id="自增约束"><a href="#自增约束" class="headerlink" title="自增约束"></a>自增约束</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 创建方式<br>create table user1(<br>    id int primary key auto_increment,<br>    name varchar(20)<br>);<br>-- 插入值<br>insert into user1(name) value(&#39;张三&#39;); <br>得到张三的name值为1 依次在后面插入值后面的id依次递增<br></code></pre></td></tr></table></figure>
+<p>当刚开始建表是忘记添加主键约束时，我们可以使用<code>alter table user4 add primarty key(id);</code></p>
+<p>使用<code>alter table user4 drop primary key</code> 删除主键约束</p>
+<p>通过修改一个字段的方式修改主键约束 <code>alter table user4 modify id int primary key</code></p>
+<h3 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h3><p>涉及两个表，一个主表，一个副表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 班级表<br>create table classes(<br>  	id int primary key,<br>    name varchar(20),<br>);<br>-- 学生表<br>create table students(<br>    id int primary key,<br>    name varchar(20),<br>    class_id int , <br>    foreign key(class_id) references classes(id)<br>);<br>insert into classes value(1,&#39;一班&#39;);<br>insert into classes value(2,&#39;二班&#39;);<br>insert into classes value(3,&#39;三班&#39;);<br>insert into classes value(4,&#39;四班&#39;);<br>insert into students value(1001,&#39;张三&#39;,1);<br>insert into students value(1002,&#39;张三&#39;,2);<br>insert into students value(1003,&#39;张三&#39;,3);<br>insert into students value(1004,&#39;张三&#39;,4);<br>-- 如果插入<br>insert into students value(1005,&#39;李四&#39;,5);<br>-- 是不可以的，因为class_id 为5的在classes表中没有<br>-- 如果主表中的记录被附表所引用，那么这一项记录在主表中不可以被删除<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="唯一约束"><a href="#唯一约束" class="headerlink" title="唯一约束"></a>唯一约束</h3><p>约束修饰的字段的值不可以重复 可以为空</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table user2(<br>    id int,<br>    name varchar(20),<br>    unique(id,name) -- 这种表示两个键在一起不能重复<br>    -- 方式1<br>);<br>alter table user2 add unique(id); -- 方式2<br>alter table user2 modify id int unique;<br>alter table user2 drop index user7 --; 移除<br><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="非空约束"><a href="#非空约束" class="headerlink" title="非空约束"></a>非空约束</h3><p>修饰的字段不能为空，但可以重复</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE user1(<br>    id INT,<br>    name VARCHAR(20),<br>    age INT DEFAULT 10<br>);<br>ALTER TABLE user1 MODIFY age INT<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="默认约束"><a href="#默认约束" class="headerlink" title="默认约束"></a>默认约束</h3><p>当我们插入字段值的时候，如果没有传则使用默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table user1(<br>    id int,<br>    name varchar,<br>    age int default<br>);<br>insert into user2(id,name) values(1,&#39;张三&#39;);<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="数据库三大设计范式"><a href="#数据库三大设计范式" class="headerlink" title="数据库三大设计范式"></a>数据库三大设计范式</h2><h3 id="第一范式-1NF"><a href="#第一范式-1NF" class="headerlink" title="第一范式(1NF)"></a>第一范式(1NF)</h3><p>数据表中的所有字段都是不可分割的原子值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table student2(<br>    id int primary key,<br>    name varchar(20),<br>    address varchar(30)<br>);<br>insert into student2 values(2,&#39;李四&#39;,&#39;重庆市南岸区成华大道&#39;);<br>-- 这里的adress可以继续拆分成privice,country,detail 满足第二范式<br>create table student3(<br>    id int primary key,<br>    name varchar(20),<br>    country varchar(5),<br>    privince varchar(10),<br>    city varchar(10),<br>    detail varchar(20),<br>);<br>-- 这里字段就不可再拆分了，满足第一范式<br></code></pre></td></tr></table></figure>
+<h3 id="第二范式-2NF"><a href="#第二范式-2NF" class="headerlink" title="第二范式(2NF)"></a>第二范式(2NF)</h3><p>满足第一范式基础上，除主键外的每一列必须完全依赖于主键</p>
+<p>如果要出现不完全依赖，只可能发生联合主键外的情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 订单表<br>create table order(<br>	product_id int,<br>    customer_id int,<br>    product_name varchar(20),<br>  	customer_name varchar(20),<br>    primary key(product_id,customer_id)<br>);<br>-- 上表中，出主键以外的其他列，只依赖于主键的部分字段，例如，product_name只关联与product_id customer_name只关联与customer_id<br>所以不满足于第二范式<br>将上述表进行拆分<br>create table myorder(<br>    order_id int primary key;<br>    product_id int,<br>    customer_id int<br>);<br>create table product(<br>    id int primary key,<br>    name varchar(20)<br>);<br>create table customer(<br>    id int primary key,<br>    name varchar(20)  <br>);<br></code></pre></td></tr></table></figure>
+<h3 id="第三范式（3NF）"><a href="#第三范式（3NF）" class="headerlink" title="第三范式（3NF）"></a>第三范式（3NF）</h3><p>必须先满足第二范式，除开主键列的其他列之间不能有传递依赖关系</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table myorder(<br>  	order_  <br>);<br></code></pre></td></tr></table></figure>
+<h2 id="查询练习"><a href="#查询练习" class="headerlink" title="查询练习"></a>查询练习</h2><h3 id="创建一个新的数据库和表"><a href="#创建一个新的数据库和表" class="headerlink" title="创建一个新的数据库和表"></a>创建一个新的数据库和表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create database select_test;<br>use select_test;<br>-- 创建学生表<br>create table student(<br>    no varchar(20) primary key,<br>    name varchar(20) not null,<br>    sex varchar(10) not null,<br>    birthday DATE,<br>    class varchar(20)<br>    -- profession varchar(20) not null,<br>    -- department varchar(20) not null<br>);<br>-- 创建教师表<br>create table teacher(<br>    no varchar(20) primary key,<br>    name varchar(20) not null,<br>    sex varchar(10) not null,<br>    birthday date,<br>    profession  varchar(20) not null, -- 职称<br>    department varchar(20) not null -- 部分<br>);<br>-- 创建课程表<br>create table course(<br>    no varchar(20) primary key,<br>    name varchar(20) not null,<br>    t_no varchar(20) not null, -- 教师编号<br>    foreign key(t_no) references teacher(no)<br>);<br>-- 成绩表<br>create table score(<br>    s_no varchar(20) not null, -- 学生id<br>    c_no varchar(20) not null, -- 课程id<br>    degree decimal, -- 成绩,<br>    foreign key(s_no) references student(no),<br>    foreign key(c_no) references course(no),<br>    primary key(s_no,c_no)<br>);<br></code></pre></td></tr></table></figure>
+<h3 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查询指定字段<br>select name from student;<br>-- 去重查询<br>select distinct department from teacher;<br>-- 查询指定范围字段<br>select * from score where degree&gt;&#x3D;80 and degree&lt;&#x3D;90;<br>-- and表示且，都要满足，or表示或<br>-- 查询的结果按升序或降序排序<br>select * from student order by degree asc;<br>select * from student order by degree desc;<br>-- 统计班级人数<br>select count(*) from student where class &#x3D;&#39;95031&#39;;<br>-- 查询指定条数数据<br>select * from score order by degree desc limit 3,5;<br><br>-- 计算平均数<br>select AVG(degree) from score where c_no &#x3D; &#39;3-105&#39;,<br>select AVG(degree) from score where c_no &#x3D; &#39;3-245&#39;, <br>select AVG(degree) from score where c_no &#x3D; &#39;6-166&#39;<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 分组查询<br>select c_no,AVG(degree) from score group by c_no;<br>-- 模糊查询<br>-- 查询选课人数大于2的课程的平均分<br>select c_no,AVG(degree) from score group by c_no having count(s_no)&gt;&#x3D;2;<br>-- 查询选课人数大于2且课程号以3开头的课程<br>select c_no,AVG(degree) from score group by c_no having count(s_no)&gt;&#x3D;2 and c_no like &#39;3%&#39;<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="多表查询练习"><a href="#多表查询练习" class="headerlink" title="多表查询练习"></a>多表查询练习</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查询所有所有学生的name,学生在score表中对应的c_no和degree<br>select name,c_no,degree from student,score where student.no &#x3D; degree.s_no;<br>-- 查询所有学生的no，课程名称和成绩<br>select student.name as s_name,course.name as c_name,degree from student,score,course where student.no &#x3D; score.s_no and score.c_no &#x3D; course.no; -- 这里的student中的name与course中的name出现了重名，所以需要用到别名<br><br><br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E5%8C%BA/">学习区</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/26/promise%E5%AD%A6%E4%B9%A0/">
+                        <span class="hidden-mobile">Promise学习(完结)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
