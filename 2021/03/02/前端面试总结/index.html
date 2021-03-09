@@ -293,14 +293,14 @@
 <p>2、关闭浏览器自动销毁</p>
 </blockquote>
 <h2 id="CSS部分"><a href="#CSS部分" class="headerlink" title="CSS部分"></a>CSS部分</h2><h3 id="CSS-盒子模型"><a href="#CSS-盒子模型" class="headerlink" title="CSS 盒子模型"></a>CSS 盒子模型</h3><h4 id="标准盒子模型"><a href="#标准盒子模型" class="headerlink" title="标准盒子模型"></a>标准盒子模型</h4><p>box-sizing:content-box</p>
-<p><img src="https://img-blog.csdn.net/20140124141001609?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenl1eml4aWFv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" srcset="/img/loading.gif" alt="标准盒子模型"></p>
+<p><img src="https://ae01.alicdn.com/kf/U83afe781c7e748cc8b664200e99fe14aC.jpg" srcset="/img/loading.gif"></p>
 <p>从上图可以看到标准 <strong><em>*</em>*W3C 盒子模型的范围包括 margin、border、padding、content，并且 content 部分不包含其他部分。*\</strong>***</p>
 <p>即指定元素的宽和高并不包括border和padding</p>
 <blockquote>
 <p>元素所占据的宽度 = margin-left+border-left+padding-left+width+padding-right+border-right+margin-right</p>
 </blockquote>
 <h4 id="怪异盒子模型-IE盒子模型"><a href="#怪异盒子模型-IE盒子模型" class="headerlink" title="怪异盒子模型(IE盒子模型)"></a>怪异盒子模型(IE盒子模型)</h4><p>box:sizing:border-box</p>
-<p><img src="https://img-blog.csdn.net/20140124141131218?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenl1eml4aWFv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" srcset="/img/loading.gif" alt="IE盒子模型"></p>
+<p><img src="https://ae01.alicdn.com/kf/U8055704f951c49b09810817feac6de59d.jpg" srcset="/img/loading.gif"></p>
 <p>　<strong>从上图可以看到 IE 盒子模型的范围也包括 margin、border、padding、content，和标准 W3C 盒子模型不同的是：IE 盒子模型的 content 部分包含了 border 和 pading。</strong></p>
 <p>这里指定元素的宽和高则包括border的padding</p>
 <blockquote>
@@ -456,19 +456,24 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span>&#123; <br> <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;<br> <span class="hljs-attribute">background</span>: skyblue;<br> <span class="hljs-attribute">overflow</span>: hidden;      <span class="hljs-comment">/*溢出隐藏*/</span><br> <span class="hljs-attribute">white-space</span>: nowrap;	<span class="hljs-comment">/*规定文本不进行换行*/</span><br> <span class="hljs-attribute">text-overflow</span>: ellipsis;	<span class="hljs-comment">/*当对象内文本溢出时显示省略标记（...）*/</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>效果如下：</p>
-<p><img src="https://img-blog.csdn.net/201810231150585?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNjM4Nzk1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt="img"></p>
+</blockquote>
+<blockquote>
 <p>2、清除浮动</p>
 <p>，父级元素不设置高度时，高度由随内容增加自适应高度。当父级元素内部的子元素全部都设置浮动float之后，子元素会脱离标准流，不占位，父级元素检测不到子元素的高度，父级元素高度为0。那么问题来了，如下：</p>
-<p><img src="https://img-blog.csdn.net/20181023144946140?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNjM4Nzk1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt="img"></p>
+</blockquote>
+<blockquote>
 <p>如上，由于父级元素没有高度，下面的元素会顶上去，造成页面的塌陷。因此，需要给父级加个overflow:hidden属性，这样父级的高度就随子级容器及子级内容的高度而自适应。如下：</p>
-<p><img src="https://img-blog.csdn.net/20181023144946140?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNjM4Nzk1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt="img"></p>
+</blockquote>
+<blockquote>
 <p>3、解决外边距塌陷</p>
 <p>父级元素内部有子元素，如果给子元素添加margin-top样式，那么父级元素也会跟着下来，造成外边距塌陷，如下：</p>
-<p><img src="https://img-blog.csdn.net/20181023145910705?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNjM4Nzk1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt="img"></p>
+</blockquote>
+<blockquote>
 <p>因此，给父级元素添加overflow:hidden，就可以解决这个问题了。</p>
-<p><img src="https://img-blog.csdn.net/20181023150202837?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNjM4Nzk1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt="img"></p>
 </blockquote>
 </li>
+</ul>
+<ul>
 <li><p>display:none：这个是彻底隐藏了元素，元素从文档流中消失，同时不占据空间</p>
 </li>
 <li><p>z-index:-9999 : 原理是将层级放到底部，这样就被覆盖了，看起来隐藏了</p>
@@ -508,11 +513,11 @@
 <h4 id="试说明z-index的工作原理"><a href="#试说明z-index的工作原理" class="headerlink" title="试说明z-index的工作原理"></a>试说明z-index的工作原理</h4><ul>
 <li><p>文档流</p>
 <p>值越大表明距离用户越近</p>
-<p><img src="https://img-blog.csdn.net/2018071420113424?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlYl96eXg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="https://ae01.alicdn.com/kf/U83afe781c7e748cc8b664200e99fe14aC.jpg" srcset="/img/loading.gif"></p>
 </li>
 <li><p>定位</p>
 <p>z-index只对定位元素有作用</p>
-<p><img src="https://img-blog.csdn.net/2018071420061983?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlYl96eXg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="https://ae01.alicdn.com/kf/U8055704f951c49b09810817feac6de59d.jpg" srcset="/img/loading.gif"></p>
 </li>
 </ul>
 <h3 id="清除浮动的方法"><a href="#清除浮动的方法" class="headerlink" title="清除浮动的方法"></a>清除浮动的方法</h3><ul>
@@ -566,7 +571,8 @@
 <p>利用闭包实现变量的私有化</p>
 <p>为什么会形成闭包：程序在访问变量时，是向底层栈一个一个找，如果找到全局执行环境里都没有对应变量，则程序抛出undefined错误</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">var</span> b = <span class="hljs-number">2</span>;<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn1</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(b);<br>    &#125;<br>    fn1();<br>&#125;<br>fn();<br></code></pre></td></tr></table></figure>
-<p><img src="https://img2018.cnblogs.com/blog/965543/201909/965543-20190925092603809-983637233.png" srcset="/img/loading.gif" alt="img"></p>
+
+
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>&#123; <span class="hljs-comment">//构造函数</span><br>    <span class="hljs-keyword">var</span> name =<span class="hljs-string">&#x27;bobo&#x27;</span>;<br>    <span class="hljs-built_in">this</span>.getName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br>    <span class="hljs-built_in">this</span>.setName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>)</span>&#123;<br>        name = value;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">const</span> bobo = <span class="hljs-keyword">new</span> Person()<br><span class="hljs-built_in">console</span>.log(bobo.getName()); <span class="hljs-comment">//bobo</span><br>bobo.setName(<span class="hljs-string">&#x27;Yanbo&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(bobo.getName());<span class="hljs-comment">//Yanbo</span><br><span class="hljs-built_in">console</span>.log(name)<span class="hljs-comment">//name is undefinded</span><br></code></pre></td></tr></table></figure>
 <p>JS闭包中的坑：</p>
 <p>1、引用的变量可能发生变化</p>
@@ -584,14 +590,15 @@
 <h4 id="prototype"><a href="#prototype" class="headerlink" title="prototype"></a>prototype</h4><p>每个函数都有一个prototype属性</p>
 <p>每一个JS属性都会在创建时关联另外一个对象，每一个对象都会从原型上继承属性</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <br>&#125;<br>Person.prototype.name = <span class="hljs-string">&#x27;bobo&#x27;</span><br><span class="hljs-keyword">var</span> person = <span class="hljs-keyword">new</span> Person();<br><span class="hljs-built_in">console</span>.log(person.name);<span class="hljs-comment">//bobo</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/1490251-48851bf37a08259d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/556/format/webp" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="https://ae01.alicdn.com/kf/Ud6ca447ab0ad424fb51093b040b532ccs.jpg" srcset="/img/loading.gif"></p>
 <h4 id="proto"><a href="#proto" class="headerlink" title="proto"></a>proto</h4><p>每个对象都有一个proto属性，指向对象的原型</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(person.__proto__ === Person.prototype) <span class="hljs-comment">//true</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/1490251-48851bf37a08259d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/556/format/webp" srcset="/img/loading.gif" alt="img"></p>
+
+
 <h4 id="contructor"><a href="#contructor" class="headerlink" title="contructor"></a>contructor</h4><p>每一个原型都有一个constructor属性指向关联的构造函数</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Person === Person.prototype.constructor) <span class="hljs-comment">//true</span><br><span class="hljs-comment">//顺便学习一个ES5获取对象原型的方法</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.getPrototypeOf(person)===Person.prototype)<span class="hljs-comment">//true</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/1490251-0cac772635e8a128.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/518/format/webp" srcset="/img/loading.gif" alt="img"></p>
-<h4 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h4><p><img src="https://upload-images.jianshu.io/upload_images/1490251-3089c135df71c956.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/604/format/webp" srcset="/img/loading.gif" alt="img"></p>
+
+<h4 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h4><p><img src="https://ae01.alicdn.com/kf/U5fbc4c20bb1841638aeb74c96d568a38v.jpg" srcset="/img/loading.gif"></p>
 <p><code>console.log(Object.prototype.__proto__ === null) // true</code></p>
 <h4 id="原型的动态性"><a href="#原型的动态性" class="headerlink" title="原型的动态性"></a>原型的动态性</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> friend = <span class="hljs-keyword">new</span> Person();<br>Person.prototype.sayHi = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;hi&quot;</span>);<br>&#125;;<br>friend.sayHi();   <span class="hljs-comment">// &quot;hi&quot;（没有问题！）</span><br></code></pre></td></tr></table></figure>
 <p>如果是重写整个原型对象，则会有问题</p>
