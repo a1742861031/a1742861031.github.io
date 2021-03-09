@@ -266,7 +266,6 @@
 <li>defer：浏览器指示脚本在文档被解析后执行，script被异步记载后并不会立即执行，而是等待文档被解析完毕后执行</li>
 <li>async：同样是异步加载脚本，区别是脚本加载完毕后立即执行</li>
 </ul>
-<p><img src="C:\Users\Yanbo\AppData\Roaming\Typora\typora-user-images\image-20210221220724474.png" srcset="/img/loading.gif" alt="image-20210221220724474"></p>
 <p>上图绿色线代表HTML解析，蓝色线代表<code>&lt;script&gt;</code>加载，而红色线代表<code>&lt;script&gt;</code>执行</p>
 <p>由上图可见<code>&lt;script&gt;</code>标签默认是同步加载的，而defer和async是异步加载，而defer是文档加载完毕后script执行，async是·<code>&lt;script&gt;</code>加载完毕后立即执行</p>
 <h3 id="前端存储方式"><a href="#前端存储方式" class="headerlink" title="前端存储方式"></a>前端存储方式</h3><p>主要是loaclStorage,cookies,sessionStorage、web SQL、indexedDB</p>
