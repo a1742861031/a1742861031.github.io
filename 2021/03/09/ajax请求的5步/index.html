@@ -17,9 +17,25 @@
   <meta name="description" content="">
   <meta name="author" content="Yanbo">
   <meta name="keywords" content="">
-  <title>归档 - bobooo的博客</title>
+  <title>Ajax请求的5步 - bobooo的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -47,7 +63,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -146,9 +162,46 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="Ajax请求的5步">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-09 19:21" pubdate>
+        2021年3月9日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      160 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -161,46 +214,90 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 18 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/12/30/2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">基础ECMA语法篇(2)</span>
-      <time style="float: right;">12-30</time>
-    </a>
-  
-    
-    <a href="/2020/12/29/1/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">基础ECMA语法篇(1)</span>
-      <time style="float: right;">12-29</time>
-    </a>
-  
-</div>
 
-
-
-
-
-              </div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Ajax请求的5步</h1>
+            
+            <div class="markdown-body">
+              <h2 id="AJAX请求的五步"><a href="#AJAX请求的五步" class="headerlink" title="AJAX请求的五步"></a>AJAX请求的五步</h2><p>今天做笔试题的时候连这道题都忘了，哎，真的是猴子扳苞谷</p>
+<h3 id="1、创建异步对象"><a href="#1、创建异步对象" class="headerlink" title="1、创建异步对象"></a>1、创建异步对象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest()<br></code></pre></td></tr></table></figure>
+<h3 id="2、设置回调函数"><a href="#2、设置回调函数" class="headerlink" title="2、设置回调函数"></a>2、设置回调函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">xhr.onreadystatechange = callback;<br></code></pre></td></tr></table></figure>
+<h3 id="3、设置请求的参数-与服务端建立连接"><a href="#3、设置请求的参数-与服务端建立连接" class="headerlink" title="3、设置请求的参数,与服务端建立连接"></a>3、设置请求的参数,与服务端建立连接</h3><p>这里的参数包括请求的方法以及请求的地址</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">xhr.open = (<span class="hljs-string">&#x27;post&#x27;</span>,<span class="hljs-string">&quot;http://jsonplaceholder/post&quot;</span>);<br></code></pre></td></tr></table></figure>
+<h3 id="4、发送请求"><a href="#4、发送请求" class="headerlink" title="4、发送请求"></a>4、发送请求</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">xhr.send();<br></code></pre></td></tr></table></figure>
+<h3 id="5、判断响应状态，对响应数据做响应的处理"><a href="#5、判断响应状态，对响应数据做响应的处理" class="headerlink" title="5、判断响应状态，对响应数据做响应的处理"></a>5、判断响应状态，对响应数据做响应的处理</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js">xhr.readyStateChange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(xhr.readyState == <span class="hljs-number">4</span>)<br>     &#123;<br>         <span class="hljs-keyword">if</span>(xhr.status&gt;=<span class="hljs-number">200</span>&amp;&amp;xhr.status&lt;<span class="hljs-number">300</span>)<br>            &#123;  <br>                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;数据返回成功&quot;</span>);<br>                <span class="hljs-built_in">console</span>.log(xhr.responseText);<br>            &#125;<br>     &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E5%8C%BA/">学习区</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/02/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">
+                        <span class="hidden-mobile">前端常见面试题总结(持续更新)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -280,9 +377,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
