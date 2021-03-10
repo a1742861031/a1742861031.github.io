@@ -172,7 +172,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-03-10 15:21" pubdate>
+      <time datetime="2021-03-10 16:21" pubdate>
         2021年3月10日 下午
       </time>
     </span>
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      389 字
+      734 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      8
        分钟
     </span>
   
@@ -227,25 +227,25 @@
             <h1 style="display: none">js原型与原型链(完结)</h1>
             
             <div class="markdown-body">
-              <h2 id="、JS原型与原型链"><a href="#、JS原型与原型链" class="headerlink" title="、JS原型与原型链"></a>、JS原型与原型链</h2><h3 id="原型上定义了一些公用属性和方法，利用这个原型创建的新对象实例会共享原型所以方法和属性"><a href="#原型上定义了一些公用属性和方法，利用这个原型创建的新对象实例会共享原型所以方法和属性" class="headerlink" title="原型上定义了一些公用属性和方法，利用这个原型创建的新对象实例会共享原型所以方法和属性"></a>原型上定义了一些公用属性和方法，利用这个原型创建的新对象实例会共享原型所以方法和属性</h3><p>创建原型</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"> <span class="hljs-keyword">var</span> Person = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>&#123; <span class="hljs-comment">//构造函数</span><br>        <span class="hljs-built_in">this</span>.name = name;<br> &#125;;<br><span class="hljs-comment">//添加原型方法</span><br>Person.prototype.sayHello = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name+<span class="hljs-string">&quot; hello&quot;</span>);<br>&#125;<br><span class="hljs-comment">//创建对象</span><br><span class="hljs-keyword">var</span> person1 = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&#x27;bobo&#x27;</span>);<br><span class="hljs-keyword">var</span> person2 = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&#x27;Jinlong&#x27;</span>);<br>person1.sayHello();<span class="hljs-comment">//输出bobo hello</span><br>person2.sayHello();<span class="hljs-comment">//输出jinlong hello</span><br><br></code></pre></td></tr></table></figure>
-<p>通过上面的例子可以看出，创建的两个对象拥有公共的方法sayHello(),这个定义在原型上的方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(person1.__proto__ === person2.__proto__);<span class="hljs-comment">//结果为true</span><br><span class="hljs-built_in">console</span>.log(Person.prototype === person1.__proto__);<span class="hljs-comment">//结果为true</span><br></code></pre></td></tr></table></figure>
-<p>所有创建的对象都有一个<code>__proto__</code>属性，指向构造函数的<code>prototype</code></p>
-<p><img src="https://ae01.alicdn.com/kf/U93f265bfaa9040dcb50c28c979ce4674X.jpg" srcset="/img/loading.gif"></p>
-<p><img src="https://ae01.alicdn.com/kf/U64c20215af5e4bc8944fa17e4fb08f3bE.jpg" srcset="/img/loading.gif"></p>
-<p>注意对象原型上也有<code>__proto__</code>属性,指向的是Oject</p>
-<p><img src="https://ae01.alicdn.com/kf/Ud22bcd1b2bcb404393977ee380d4c62f3.jpg" srcset="/img/loading.gif"></p>
-<p>普通函数也是如此</p>
-<p><img src="https://ae01.alicdn.com/kf/U3b53f224fc6642f683c72efa0af18c16l.jpg" srcset="/img/loading.gif"></p>
-<p>原型链图，原型又有一个constructor属性指回构造函数</p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">Person<span class="hljs-operator"> === </span><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Person</span>.</span></span>prototype.constructor <span class="hljs-comment">//</span><br></code></pre></td></tr></table></figure>
-<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>我们知道，原型也是一个对象，所以按之前的说法，所有对象都有<code>__proto</code>属性，原型也不例外,原型链主要解决的是继承问题</p>
-<p><img src="https://ae01.alicdn.com/kf/U843410139ca04f23a711ac22b4ec65baF.jpg" srcset="/img/loading.gif"></p>
-<p>我们可以发现，原型的<code>__proto__</code>属性指向的是构造函数<code>Object</code>的<code>prototype</code></p>
-<p>所谓的原型链，就是一个对象使用方法或者属性，如果在对象上没有找到，则在它的原型上去找，如果还是找不到，则在原型的原型上去找，最终找到</p>
-<p><code>Object.prototype</code>上，得到的为<code>null</code>，就不继续找了，返回<code>undefined</code></p>
-<p><img src="https://ae01.alicdn.com/kf/U7e2eb59231874bd89d3f6e1a9c2388ccV.jpg" srcset="/img/loading.gif"></p>
+              <h2 id="节流与防抖"><a href="#节流与防抖" class="headerlink" title="节流与防抖"></a>节流与防抖</h2><p>参与于一篇博客<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018428170">https://segmentfault.com/a/1190000018428170</a></p>
+<h3 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h3><p>作者通过监听滚动条的位置这个函数说起</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showTop</span>  (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> scrollTop = <span class="hljs-built_in">document</span>.body.scrollTop || <span class="hljs-built_in">document</span>.documentElement.scrollTop;<br>　　<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;滚动条位置：&#x27;</span> + scrollTop);<br>&#125;<br><span class="hljs-built_in">window</span>.onscroll  = showTop<br></code></pre></td></tr></table></figure>
+<p>上面这个函数可以实现实时监听滚动条的位置，但是触发的频率是在是太高了</p>
+<p><img src="https://ae01.alicdn.com/kf/U87abc8f9b91d4ccaa8bc759928e9a3df0.jpg" srcset="/img/loading.gif"></p>
+<p>如果是在真实业务中，例如百度搜索提示按照这个频率的话，后台服务器肯定就崩溃了</p>
+<p>解决方案：在第一次触发事件时，不立即执行函数，而是给出一个期限值</p>
+<ul>
+<li>在200ms之内如果没有再次触发事件，则执行后面的函数</li>
+<li>如果200ms内触发事件，则计时器清零，重新开始计时</li>
+</ul>
+<p>代码实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/*</span><br><span class="hljs-comment">* fn [function] 需要防抖的函数</span><br><span class="hljs-comment">* delay [number] 毫秒，防抖期限值</span><br><span class="hljs-comment">*/</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span>(<span class="hljs-params">fn,delay</span>)</span>&#123;<br>    <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span> <span class="hljs-comment">//借助闭包</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">if</span>(timer)&#123;<br>            <span class="hljs-built_in">clearTimeout</span>(timer) <span class="hljs-comment">//进入该分支语句，说明当前正在一个计时过程中，并且又触发了相同事件。所以要取消当前的计时，重新开始计时</span><br>            timer = <span class="hljs-built_in">setTimeout</span>(fn,delay) <br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            timer = <span class="hljs-built_in">setTimeout</span>(fn,delay) <span class="hljs-comment">// 进入该分支说明当前并没有在计时，那么就开始一个计时</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>综上：<strong>防抖的主要作用，就是在事件被连续触发时，通过防抖让事件在一段时间内只会被触发一次</strong></p>
+<h3 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h3><p>如果在限定事件段内，不断触发滚动事件，那么原理上这个事件可能永远也不会执行</p>
+<p>解决思路：通过设计类似控制阀门一样定期开放的函数，<strong>也就是让函数执行一次后，在某个时间段内暂时失效，过了这段时间后再重新激活</strong></p>
+<p><strong>效果</strong>：如果短时间内大量触发同一事件，那么<strong>在函数执行一次之后，该函数在指定的时间期限内不再工作</strong>，直至过了这段时间才重新生效。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">throttle</span>(<span class="hljs-params">fn,delay</span>)</span>&#123;<br>    <span class="hljs-keyword">let</span> valid = <span class="hljs-literal">true</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>       <span class="hljs-keyword">if</span>(!valid)&#123;<br>           <span class="hljs-comment">//休息时间 暂不接客</span><br>           <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span> <br>       &#125;<br>       <span class="hljs-comment">// 工作时间，执行函数并且在间隔期内把状态位设为无效</span><br>        valid = <span class="hljs-literal">false</span><br>        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>            fn()<br>            valid = <span class="hljs-literal">true</span>;<br>        &#125;, delay)<br>    &#125;<br>&#125;<br><span class="hljs-comment">/* 请注意，节流函数并不止上面这种实现方案,</span><br><span class="hljs-comment">   例如可以完全不借助setTimeout，可以把状态位换成时间戳，然后利用时间戳差值是否大于指定间隔时间来做判定。</span><br><span class="hljs-comment">   也可以直接将setTimeout的返回的标记当做判断条件-判断当前定时器是否存在，如果存在表示还在冷却，并且在执行fn之后消除定时器表示激活，原理都一样</span><br><span class="hljs-comment">    */</span><br><br><span class="hljs-comment">// 以下照旧</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showTop</span>  (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> scrollTop = <span class="hljs-built_in">document</span>.body.scrollTop || <span class="hljs-built_in">document</span>.documentElement.scrollTop;<br>　　<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;滚动条位置：&#x27;</span> + scrollTop);<br>&#125;<br><span class="hljs-built_in">window</span>.onscroll = throttle(showTop,<span class="hljs-number">1000</span>) <br></code></pre></td></tr></table></figure>
+
 
             </div>
             <hr>
@@ -276,18 +276,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/03/10/%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">js原型与原型链(完结)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/03/09/ajax%E8%AF%B7%E6%B1%82%E7%9A%845%E6%AD%A5/">
-                        <span class="hidden-mobile">Ajax请求的5步</span>
+                      <a href="/2021/03/10/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/">
+                        <span class="hidden-mobile">js原型与原型链(完结)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
