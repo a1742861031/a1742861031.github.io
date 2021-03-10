@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Yanbo">
   <meta name="keywords" content="">
-  <title>Ajax请求的5步 - bobooo blog</title>
+  <title>js原型与原型链(完结) - bobooo blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Ajax请求的5步">
+            <span class="h2" id="subtitle" title="js原型与原型链(完结)">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-03-09 19:21" pubdate>
-        2021年3月9日 晚上
+      <time datetime="2021-03-10 15:21" pubdate>
+        2021年3月10日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      160 字
+      389 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      4
        分钟
     </span>
   
@@ -224,16 +224,29 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Ajax请求的5步</h1>
+            <h1 style="display: none">js原型与原型链(完结)</h1>
             
             <div class="markdown-body">
-              <h2 id="AJAX请求的五步"><a href="#AJAX请求的五步" class="headerlink" title="AJAX请求的五步"></a>AJAX请求的五步</h2><p>今天做笔试题的时候连这道题都忘了，哎，真的是猴子扳苞谷</p>
-<h3 id="1、创建异步对象"><a href="#1、创建异步对象" class="headerlink" title="1、创建异步对象"></a>1、创建异步对象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest()<br></code></pre></td></tr></table></figure>
-<h3 id="2、设置回调函数"><a href="#2、设置回调函数" class="headerlink" title="2、设置回调函数"></a>2、设置回调函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">xhr.onreadystatechange = callback;<br></code></pre></td></tr></table></figure>
-<h3 id="3、设置请求的参数-与服务端建立连接"><a href="#3、设置请求的参数-与服务端建立连接" class="headerlink" title="3、设置请求的参数,与服务端建立连接"></a>3、设置请求的参数,与服务端建立连接</h3><p>这里的参数包括请求的方法以及请求的地址</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">xhr.open = (<span class="hljs-string">&#x27;post&#x27;</span>,<span class="hljs-string">&quot;http://jsonplaceholder/post&quot;</span>);<br></code></pre></td></tr></table></figure>
-<h3 id="4、发送请求"><a href="#4、发送请求" class="headerlink" title="4、发送请求"></a>4、发送请求</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">xhr.send();<br></code></pre></td></tr></table></figure>
-<h3 id="5、判断响应状态，对响应数据做响应的处理"><a href="#5、判断响应状态，对响应数据做响应的处理" class="headerlink" title="5、判断响应状态，对响应数据做响应的处理"></a>5、判断响应状态，对响应数据做响应的处理</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js">xhr.readyStateChange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(xhr.readyState == <span class="hljs-number">4</span>)<br>     &#123;<br>         <span class="hljs-keyword">if</span>(xhr.status&gt;=<span class="hljs-number">200</span>&amp;&amp;xhr.status&lt;<span class="hljs-number">300</span>)<br>            &#123;  <br>                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;数据返回成功&quot;</span>);<br>                <span class="hljs-built_in">console</span>.log(xhr.responseText);<br>            &#125;<br>     &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+              <h2 id="、JS原型与原型链"><a href="#、JS原型与原型链" class="headerlink" title="、JS原型与原型链"></a>、JS原型与原型链</h2><h3 id="原型上定义了一些公用属性和方法，利用这个原型创建的新对象实例会共享原型所以方法和属性"><a href="#原型上定义了一些公用属性和方法，利用这个原型创建的新对象实例会共享原型所以方法和属性" class="headerlink" title="原型上定义了一些公用属性和方法，利用这个原型创建的新对象实例会共享原型所以方法和属性"></a>原型上定义了一些公用属性和方法，利用这个原型创建的新对象实例会共享原型所以方法和属性</h3><p>创建原型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"> <span class="hljs-keyword">var</span> Person = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>&#123; <span class="hljs-comment">//构造函数</span><br>        <span class="hljs-built_in">this</span>.name = name;<br> &#125;;<br><span class="hljs-comment">//添加原型方法</span><br>Person.prototype.sayHello = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name+<span class="hljs-string">&quot; hello&quot;</span>);<br>&#125;<br><span class="hljs-comment">//创建对象</span><br><span class="hljs-keyword">var</span> person1 = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&#x27;bobo&#x27;</span>);<br><span class="hljs-keyword">var</span> person2 = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&#x27;Jinlong&#x27;</span>);<br>person1.sayHello();<span class="hljs-comment">//输出bobo hello</span><br>person2.sayHello();<span class="hljs-comment">//输出jinlong hello</span><br><br></code></pre></td></tr></table></figure>
+<p>通过上面的例子可以看出，创建的两个对象拥有公共的方法sayHello(),这个定义在原型上的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(person1.__proto__ === person2.__proto__);<span class="hljs-comment">//结果为true</span><br><span class="hljs-built_in">console</span>.log(Person.prototype === person1.__proto__);<span class="hljs-comment">//结果为true</span><br></code></pre></td></tr></table></figure>
+<p>所有创建的对象都有一个<code>__proto__</code>属性，指向构造函数的<code>prototype</code></p>
+<p><img src="https://ae01.alicdn.com/kf/U93f265bfaa9040dcb50c28c979ce4674X.jpg" srcset="/img/loading.gif"></p>
+<p><img src="https://ae01.alicdn.com/kf/U64c20215af5e4bc8944fa17e4fb08f3bE.jpg" srcset="/img/loading.gif"></p>
+<p>注意对象原型上也有<code>__proto__</code>属性,指向的是Oject</p>
+<p><img src="https://ae01.alicdn.com/kf/Ud22bcd1b2bcb404393977ee380d4c62f3.jpg" srcset="/img/loading.gif"></p>
+<p>普通函数也是如此</p>
+<p><img src="https://ae01.alicdn.com/kf/U3b53f224fc6642f683c72efa0af18c16l.jpg" srcset="/img/loading.gif"></p>
+<p>原型链图，原型又有一个constructor属性指回构造函数</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">Person<span class="hljs-operator"> === </span><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Person</span>.</span></span>prototype.constructor <span class="hljs-comment">//</span><br></code></pre></td></tr></table></figure>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>我们知道，原型也是一个对象，所以按之前的说法，所有对象都有<code>__proto</code>属性，原型也不例外,原型链主要解决的是继承问题</p>
+<p><img src="https://ae01.alicdn.com/kf/U843410139ca04f23a711ac22b4ec65baF.jpg" srcset="/img/loading.gif"></p>
+<p>我们可以发现，原型的<code>__proto__</code>属性指向的是构造函数<code>Object</code>的<code>prototype</code></p>
+<p>所谓的原型链，就是一个对象使用方法或者属性，如果在对象上没有找到，则在它的原型上去找，如果还是找不到，则在原型的原型上去找，最终找到</p>
+<p><code>Object.prototype</code>上，得到的为<code>null</code>，就不继续找了，返回<code>undefined</code></p>
+<p><img src="https://ae01.alicdn.com/kf/U7e2eb59231874bd89d3f6e1a9c2388ccV.jpg" srcset="/img/loading.gif"></p>
+
             </div>
             <hr>
             <div>
@@ -242,7 +255,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/">前端知识点</a>
                     
                   </div>
                 
@@ -263,18 +276,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/03/10/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">js原型与原型链(完结)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/03/02/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">
-                        <span class="hidden-mobile">前端常见面试题总结(持续更新)</span>
+                      <a href="/2021/03/09/ajax%E8%AF%B7%E6%B1%82%E7%9A%845%E6%AD%A5/">
+                        <span class="hidden-mobile">Ajax请求的5步</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
