@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>希尔排序算法</title>
+    <link href="/2021/03/20/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/"/>
+    <url>/2021/03/20/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/</url>
+    
+    <content type="html"><![CDATA[<h2 id="shell排序"><a href="#shell排序" class="headerlink" title="shell排序"></a>shell排序</h2><p>shell是直接插入排序的改进方法，shell排序的思想是把待排的元素按照增量进行分组，对每一组分别进行排序，每次分组排序完成后增量减半，待增量减小为1时，排序结束</p><p><img src="https://ae01.alicdn.com/kf/U45806cdfee134a4386c97f84b17093b9F.jpg"></p><p>以上图为例，我们取增量为5，第一趟被分为5组，每一组直接插入排序</p><p>第二次增量减半，被分为2组，每一组也是直接插入排序</p><p>第三次增量减半，为1，这是整个称为一组，直接进行插入排序</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">shellSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[], <span class="hljs-keyword">int</span> n)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> d = n / <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; d; i++)            <span class="hljs-comment">//通过d进行分组</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + d; j &lt; n; j += d) <span class="hljs-comment">//每个组进行插入排序</span><br>            &#123;<br>                <span class="hljs-keyword">int</span> temp = arr[j];<br>                <span class="hljs-keyword">int</span> k;<br>                <span class="hljs-keyword">for</span> (k = j - d; k &gt;= <span class="hljs-number">0</span> &amp;&amp; arr[k] &gt; temp; k = k - d)<br>                    arr[k + d] = arr[k];<br>                arr[k + d] = temp;<br>            &#125;<br>        <span class="hljs-keyword">if</span> (d == <span class="hljs-number">1</span>)<br>            <span class="hljs-keyword">break</span>;<br>        d /= <span class="hljs-number">2</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>最终的代码如上</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习区</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Vue知识点(持续更新)</title>
     <link href="/2021/03/13/Vue%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
     <url>/2021/03/13/Vue%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</url>
