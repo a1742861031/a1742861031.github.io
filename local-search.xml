@@ -4,31 +4,6 @@
   
   
   <entry>
-    <title>打卡day1</title>
-    <link href="/2021/04/05/%E6%89%93%E5%8D%A1day1/"/>
-    <url>/2021/04/05/%E6%89%93%E5%8D%A1day1/</url>
-    
-    <content type="html"><![CDATA[<h2 id="毕设学习打开-day1"><a href="#毕设学习打开-day1" class="headerlink" title="毕设学习打开 day1"></a>毕设学习打开 day1</h2><p>人工神经网络VS生物神经网络 是不同的</p><p>人工神经网络由人工神经元组成的，</p><p><img src="https://ae01.alicdn.com/kf/U959446759ee746e6842dc3f5f5ed6ba8k.jpg"></p><p><img src="https://ae01.alicdn.com/kf/U5d6793c206314613b4d4633a7ac78c0eS.jpg"></p><p>神经网路如何训练</p><p>数据集+算法</p><p>激活函数</p><p>optimization：优化器</p><p>梯度下降 牛顿法、</p><p>误差方程 cost = (predicted-real)</p><p><img src="https://ae01.alicdn.com/kf/U7edff42110c249128e99abcd569ca88bd.jpg"></p><p>神经网络是一连串的神经层组成的，把输入进行加工在输出的系统</p><p>输入——————-&gt;加工—————————-&gt;输出</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 线性回归 预测</span><br><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># create data</span><br>x_data = np.random.rand(<span class="hljs-number">100</span>).astype(np.float32)<br>y_data = x_data*<span class="hljs-number">0.1</span>+<span class="hljs-number">0.3</span><br><br><span class="hljs-comment"># create tensorflow structure start</span><br><br>Weights = tf.Variable(tf.random.uniform([<span class="hljs-number">1</span>], -<span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>))<br>biases = tf.Variable(tf.zeros([<span class="hljs-number">1</span>]))<br><br>y = Weights*x_data+biases<br>loss = tf.reduce_mean(tf.square(y-y_data))<br><br><span class="hljs-comment"># 建立优化器</span><br>optimizer = tf.train.GradientDescentOptimizer(<span class="hljs-number">0.5</span>)<br>train = optimizer.minimize(loss)<br>init = tf.initialize_all_variables()<br><br><span class="hljs-comment"># create tensorflow structure end</span><br><br>sess = tf.Session()<br>sess.run(init)   <span class="hljs-comment"># 初始化</span><br><br><span class="hljs-keyword">for</span> step <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">201</span>):<br>    sess.run(train)<br>    <span class="hljs-keyword">if</span> step % <span class="hljs-number">20</span> == <span class="hljs-number">0</span>:<br>        print(step, sess.run(Weights), sess.run(biases))<br></code></pre></td></tr></table></figure><p>tensorflow是通过会话运行的，sess.run() ,sess.close()</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>毕设打卡</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>学习区</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>希尔排序算法</title>
     <link href="/2021/03/20/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/"/>
     <url>/2021/03/20/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/</url>
@@ -214,31 +189,6 @@
     <categories>
       
       <category>面试</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>学习区</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>毕设绩效管理系统进度打卡day1(持续更新)</title>
-    <link href="/2021/02/09/%E6%AF%95%E8%AE%BE%E8%BF%9B%E5%BA%A6%E6%89%93%E5%8D%A11/"/>
-    <url>/2021/02/09/%E6%AF%95%E8%AE%BE%E8%BF%9B%E5%BA%A6%E6%89%93%E5%8D%A11/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    <categories>
-      
-      <category>毕设</category>
       
     </categories>
     
