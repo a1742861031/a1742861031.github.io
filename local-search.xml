@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>leetcode第十二题</title>
+    <link href="/2021/05/19/leet%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B9%9D%E9%A2%98/"/>
+    <url>/2021/05/19/leet%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B9%9D%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h2 id="组合总和"><a href="#组合总和" class="headerlink" title="组合总和"></a>组合总和</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个无重复元素的数组 <code>candidates</code> 和一个目标数<code>target</code> ，找出 <code>candidates</code> 中所有可以使数字和为 <code>target</code> 的组合。</p><p><code>candidates</code> 中的数字可以无限制重复被选取。</p><p>说明：</p><ul><li>所有数字（包括 <code>target</code>）都是正整数。</li><li>解集不能包含重复的组合。</li></ul><p><strong>示例 1：</strong></p><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs inform7">输入：candidates = <span class="hljs-comment">[2,3,6,7]</span>, target = 7,<br>所求解集为：<br><span class="hljs-comment">[</span><br><span class="hljs-comment">  <span class="hljs-comment">[7]</span>,</span><br><span class="hljs-comment">  <span class="hljs-comment">[2,2,3]</span></span><br><span class="hljs-comment">]</span><br></code></pre></td></tr></table></figure><p><strong>示例 2：</strong></p><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs inform7">输入：candidates = <span class="hljs-comment">[2,3,5]</span>, target = 8,<br>所求解集为：<br><span class="hljs-comment">[</span><br><span class="hljs-comment">  <span class="hljs-comment">[2,2,2,2]</span>,</span><br><span class="hljs-comment">  <span class="hljs-comment">[2,3,3]</span>,</span><br><span class="hljs-comment">  <span class="hljs-comment">[3,5]</span></span><br><span class="hljs-comment">]</span><br></code></pre></td></tr></table></figure><p><strong>提示：</strong></p><ul><li>1 &lt;= candidates.length &lt;= 30</li><li>1 &lt;= candidates[i] &lt;= 200</li><li>candidate 中的每个元素都是独一无二的。</li><li>1 &lt;= target &lt;= 500</li></ul><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>这道题的方法也是回溯法，回溯法一直感觉比较抽象，无法理解其中的精髓。回溯法和深度优先遍历很像。通常通过递归实现。通过回溯法搜索所有可能的情况，即组合与目标值相同的情况，符合条件则将其存入到结果中。做这种题可以通过画树型图的方式进行解决。</p><p>以输入：<code>candidates = [2, 3, 6, 7]</code>, <code>target = 7</code> 为例：</p><p><img src="https://ae01.alicdn.com/kf/Ue544b8c5093f43d7ae511eb7a60ea684a.jpg"></p><p>说明：</p><ul><li>以 target = 7 为 根结点 ，创建一个分支的时 做减法 ；</li><li>每一个箭头表示：从父亲结点的数值减去边上的数值，得到孩子结点的数值。边的值就是题目中给出的 candidate 数组的每个元素的值；</li><li>减到 00 或者负数的时候停止，即：结点 00 和负数结点成为叶子结点；</li><li>所有从根结点到结点 00 的路径（只能从上往下，没有回路）就是题目要找的一个结果。</li></ul><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> combinationSum = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">candidates, target</span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> ans = []<br>    candidates.sort(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a,b</span>)</span>&#123;<br>        <span class="hljs-keyword">return</span> a-b<br>    &#125;)<br>    <span class="hljs-keyword">var</span> dfs = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">combine, candidates, target, level</span>) </span>&#123;<br>        <span class="hljs-comment">//combine 当前结果集</span><br>        <span class="hljs-comment">//condidates 候选人</span><br>        <span class="hljs-comment">// target 目标值</span><br>        <span class="hljs-comment">// level 当前所在的层数</span><br>        <span class="hljs-comment">//定义 边界条件</span><br>        <span class="hljs-keyword">if</span> (target == <span class="hljs-number">0</span>) &#123;<br>            ans.push(combine.slice())<br>            <span class="hljs-keyword">return</span><br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = level; i &lt; candidates.length &amp;&amp; (target - candidates[i]) &gt;= <span class="hljs-number">0</span>; i++) &#123; <br>            combine.push(candidates[i]); <span class="hljs-comment">// 压入当前结果</span><br>            dfs(combine, candidates, target - candidates[i], i)<br>            combine.pop()  <span class="hljs-comment">//从当前结果中弹出</span><br>        &#125;<br>    &#125;<br>    dfs([], candidates, target, <span class="hljs-number">0</span>)<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode刷题</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习区</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>leetcode第二十二题</title>
     <link href="/2021/05/18/leetcode%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E9%A2%98/"/>
     <url>/2021/05/18/leetcode%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E9%A2%98/</url>
