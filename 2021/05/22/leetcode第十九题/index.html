@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Yanbo">
   <meta name="keywords" content="">
-  <title>leetcode第三十九题 - bobooo blog</title>
+  <title>leetcode第十九题 - bobooo blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="leetcode第三十九题">
+            <span class="h2" id="subtitle" title="leetcode第十九题">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-05-19 16:21" pubdate>
-        2021年5月19日 下午
+      <time datetime="2021-05-22 16:21" pubdate>
+        2021年5月22日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      543 字
+      353 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      5
        分钟
     </span>
   
@@ -224,39 +224,24 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">leetcode第三十九题</h1>
+            <h1 style="display: none">leetcode第十九题</h1>
             
             <div class="markdown-body">
-              <h2 id="组合总和"><a href="#组合总和" class="headerlink" title="组合总和"></a>组合总和</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个无重复元素的数组 <code>candidates</code> 和一个目标数<code>target</code> ，找出 <code>candidates</code> 中所有可以使数字和为 <code>target</code> 的组合。</p>
-<p><code>candidates</code> 中的数字可以无限制重复被选取。</p>
-<p>说明：</p>
-<ul>
-<li>所有数字（包括 <code>target</code>）都是正整数。</li>
-<li>解集不能包含重复的组合。</li>
-</ul>
+              <h2 id="leetcode-第15题-三数之和"><a href="#leetcode-第15题-三数之和" class="headerlink" title="leetcode 第15题 三数之和"></a>leetcode 第15题 三数之和</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。</p>
+<p>注意：答案中不可以包含重复的三元组。</p>
 <p><strong>示例 1：</strong></p>
-<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs inform7">输入：candidates = <span class="hljs-comment">[2,3,6,7]</span>, target = 7,<br>所求解集为：<br><span class="hljs-comment">[</span><br><span class="hljs-comment">  <span class="hljs-comment">[7]</span>,</span><br><span class="hljs-comment">  <span class="hljs-comment">[2,2,3]</span></span><br><span class="hljs-comment">]</span>	<br></code></pre></td></tr></table></figure>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs subunit">输入：nums = [<span class="hljs-string">-1</span>,0,1,2,<span class="hljs-string">-1</span>,<span class="hljs-string">-4</span>]<br>输出：[[<span class="hljs-string">-1</span>,<span class="hljs-string">-1</span>,2],[<span class="hljs-string">-1</span>,0,1]]<br></code></pre></td></tr></table></figure>
 <p><strong>示例 2：</strong></p>
-<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs inform7">输入：candidates = <span class="hljs-comment">[2,3,5]</span>, target = 8,<br>所求解集为：<br><span class="hljs-comment">[</span><br><span class="hljs-comment">  <span class="hljs-comment">[2,2,2,2]</span>,</span><br><span class="hljs-comment">  <span class="hljs-comment">[2,3,3]</span>,</span><br><span class="hljs-comment">  <span class="hljs-comment">[3,5]</span></span><br><span class="hljs-comment">]</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs inform7">输入：nums = <span class="hljs-comment">[]</span><br>输出：<span class="hljs-comment">[]</span><br></code></pre></td></tr></table></figure>
+<p><strong>示例 3：</strong></p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs inform7">输入：nums = <span class="hljs-comment">[0]</span><br>输出：<span class="hljs-comment">[]</span><br></code></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
-<li>1 &lt;= candidates.length &lt;= 30</li>
-<li>1 &lt;= candidates[i] &lt;= 200</li>
-<li>candidate 中的每个元素都是独一无二的。</li>
-<li>1 &lt;= target &lt;= 500</li>
+<li><code>0 &lt;= nums.length &lt;= 3000</code></li>
+<li><code>-105 &lt;= nums[i] &lt;= 105</code></li>
 </ul>
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>这道题的方法也是回溯法，回溯法一直感觉比较抽象，无法理解其中的精髓。回溯法和深度优先遍历很像。通常通过递归实现。通过回溯法搜索所有可能的情况，即组合与目标值相同的情况，符合条件则将其存入到结果中。做这种题可以通过画树型图的方式进行解决。</p>
-<p>以输入：<code>candidates = [2, 3, 6, 7]</code>, <code>target = 7</code> 为例：</p>
-<p><img src="https://ae01.alicdn.com/kf/Ue544b8c5093f43d7ae511eb7a60ea684a.jpg" srcset="/img/loading.gif"></p>
-<p>说明：</p>
-<ul>
-<li>以 target = 7 为 根结点 ，创建一个分支的时 做减法 ；</li>
-<li>每一个箭头表示：从父亲结点的数值减去边上的数值，得到孩子结点的数值。边的值就是题目中给出的 candidate 数组的每个元素的值；</li>
-<li>减到 00 或者负数的时候停止，即：结点 00 和负数结点成为叶子结点；</li>
-<li>所有从根结点到结点 00 的路径（只能从上往下，没有回路）就是题目要找的一个结果。</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> combinationSum = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">candidates, target</span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> ans = []<br>    candidates.sort(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a,b</span>)</span>&#123;<br>        <span class="hljs-keyword">return</span> a-b<br>    &#125;)<br>    <span class="hljs-keyword">var</span> dfs = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">combine, candidates, target, level</span>) </span>&#123;<br>        <span class="hljs-comment">//combine 当前结果集</span><br>        <span class="hljs-comment">//condidates 候选人</span><br>        <span class="hljs-comment">// target 目标值</span><br>        <span class="hljs-comment">// level 当前所在的层数</span><br>        <span class="hljs-comment">//定义 边界条件</span><br>        <span class="hljs-keyword">if</span> (target == <span class="hljs-number">0</span>) &#123;<br>            ans.push(combine.slice())<br>            <span class="hljs-keyword">return</span><br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = level; i &lt; candidates.length &amp;&amp; (target - candidates[i]) &gt;= <span class="hljs-number">0</span>; i++) &#123; <br>            combine.push(candidates[i]); <span class="hljs-comment">// 压入当前结果</span><br>            dfs(combine, candidates, target - candidates[i], i)<br>            combine.pop()  <span class="hljs-comment">//从当前结果中弹出</span><br>        &#125;<br>    &#125;<br>    dfs([], candidates, target, <span class="hljs-number">0</span>)<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>这道题说的是三数之和 可以通过遍历数组然后转换成两数之和进行求解，两数之和这里也是用的双指针的解法，详细见leetcode_1</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">var threeSum = <span class="hljs-keyword">function</span> (nums) &#123;<br>    let ans = [];<br>    <span class="hljs-keyword">if</span> (nums.length &lt; <span class="hljs-number">3</span>)<br>        <span class="hljs-keyword">return</span> ans;<br>    var helper = <span class="hljs-keyword">function</span> (nums, <span class="hljs-keyword">start</span>, <span class="hljs-keyword">end</span>, target, <span class="hljs-keyword">value</span>) &#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-keyword">start</span> &lt; <span class="hljs-keyword">end</span>) &#123;<br>            let sum = nums[<span class="hljs-keyword">start</span>] + nums[<span class="hljs-keyword">end</span>]<br>            <span class="hljs-keyword">if</span> (sum == target) &#123; //找到两数<br>                let combine = []<br>                combine.push(<span class="hljs-keyword">value</span>)<br>                combine.push(nums[<span class="hljs-keyword">start</span>])<br>                combine.push(nums[<span class="hljs-keyword">end</span>])<br>                ans.push(combine);<br>                <span class="hljs-keyword">while</span> (<span class="hljs-keyword">start</span> &lt; <span class="hljs-keyword">end</span> &amp;&amp; nums[<span class="hljs-keyword">start</span>] == nums[<span class="hljs-keyword">start</span> + <span class="hljs-number">1</span>]) // 过滤掉重复数 方便后续继续搜索<br>                    <span class="hljs-keyword">start</span>++;<br>                <span class="hljs-keyword">start</span>++;<br>                <span class="hljs-keyword">while</span> (<span class="hljs-keyword">start</span> &lt; <span class="hljs-keyword">end</span> &amp;&amp; nums[<span class="hljs-keyword">end</span>] == nums[<span class="hljs-keyword">end</span> - <span class="hljs-number">1</span>])<br>                    <span class="hljs-keyword">end</span><span class="hljs-comment">--;</span><br>                <span class="hljs-keyword">end</span><span class="hljs-comment">--;</span><br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sum &lt; target)<br>                <span class="hljs-keyword">start</span>++;<br>            <span class="hljs-keyword">else</span><br>                <span class="hljs-keyword">end</span><span class="hljs-comment">--;</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>    nums.sort((a, b) =&gt; &#123;<br>        <span class="hljs-keyword">return</span> a - b;<br>    &#125;)<br>    <span class="hljs-keyword">for</span> (let i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span> &amp;&amp; nums[i] == nums[i - <span class="hljs-number">1</span>]) //避免重复<br>            <span class="hljs-keyword">continue</span><br>        helper(nums, i + <span class="hljs-number">1</span>, nums.length - <span class="hljs-number">1</span>, -nums[i], nums[i])<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans<br>&#125;;<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -287,18 +272,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/05/22/leetcode%E7%AC%AC%E5%8D%81%E4%B9%9D%E9%A2%98/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">leetcode第十九题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/05/18/leetcode%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E9%A2%98/">
-                        <span class="hidden-mobile">leetcode第二十二题</span>
+                      <a href="/2021/05/19/leet%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B9%9D%E9%A2%98/">
+                        <span class="hidden-mobile">leetcode第三十九题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
