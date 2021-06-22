@@ -1,0 +1,617 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yanbo">
+  <meta name="keywords" content="">
+  <title>Java语言基础1 - bobooo blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>bobooo blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Java语言基础1">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-06-02 16:21" pubdate>
+        2021年6月2日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java语言基础1</h1>
+            
+            <div class="markdown-body">
+              <h2 id="第一个Java程序"><a href="#第一个Java程序" class="headerlink" title="第一个Java程序"></a>第一个Java程序</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//java程序的所有内容都应该放在类中</span><br><span class="hljs-comment">//这里也有命名规范 类名的所有单词都应该大写</span><br><span class="hljs-comment">//源代码的文件名必须和公共类名相同</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Hello</span> </span>&#123;<br>    <span class="hljs-comment">//main方法要声明成public</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">//输出并换行</span><br>        System.out.println(<span class="hljs-string">&quot;这是我java的第一个程序&quot;</span>);<br>        <span class="hljs-comment">//如果是print方法则代表输出不换行</span><br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li><p>上述代码就是第一个java程序啦，java的程序风格和C/C++类似</p>
+</li>
+<li><p>Java区分大小写</p>
+</li>
+<li><p>java程序的所有内容都应该放在类中，类在命名时应该要有规范，即字母的首字母都应该大写</p>
+</li>
+<li><p>java的源文件名应该和公共类名相同</p>
+</li>
+<li><p><code>main</code>方法需要声明成<code>public</code></p>
+</li>
+</ul>
+<h2 id="Java的数据类型"><a href="#Java的数据类型" class="headerlink" title="Java的数据类型"></a>Java的数据类型</h2><p>java是一种强类型语言，和C/C++类似 共有8种数据类型，其中包括4种整形，2中浮点类型，1种用于表示Unicode编码的字符单元的字符类型和boolen类型</p>
+<h3 id="整形"><a href="#整形" class="headerlink" title="整形"></a>整形</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储需求</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>4字节</td>
+<td>-2147483648-2147483648</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2字节</td>
+<td>-32768-32768</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8字节</td>
+<td></td>
+</tr>
+<tr>
+<td>byte</td>
+<td>1字节</td>
+<td>-128-127</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>通常情况下，int类型最常用。但如果表示星球上的居住人数，就需要使用long 类型了。byte 和short 类型主要用于特定的应用场合，例如，底层的文件处理或者需要控制占用存储空间量的大数组。</p>
+</blockquote>
+<p>与C/C++的不同</p>
+<ul>
+<li>java没有无符号型</li>
+<li>java是跨平台的，取值范围与目标平台无关</li>
+</ul>
+<h3 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储需求</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4字节</td>
+<td>大约± 3.402 823 47E+38F （有效位数为6 ” 7 位）</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8字节</td>
+<td>大约± I. 797 693 134 862 315 70E+ 308 （有效位数为15 位）</td>
+</tr>
+</tbody></table>
+<p>double 表示这种类型的数值精度是float 类型的两倍（有人称之为双精度数值） 。绝大部分应用程序都采用double 类型。在很多情况下， float 类型的精度很难满足需求。实际上，只有很少的情况适合使用float 类型，例如，需要单精度数据的库，或者需要存储大量数据。</p>
+<p><code>if(Double.isNaN(x)) //check whether x is &quot;not a number&quot;</code></p>
+<h3 id="char类型"><a href="#char类型" class="headerlink" title="char类型"></a>char类型</h3><p>char类型和C中的char很类似，char类型的字面量值要用<code>单引号</code>括起来。例如：’A’的编码值为65所对应的字符常量</p>
+<p>char 类型原本用于表示单个字符。不过，现在情况已经有所变化。如今，有些Unicode字符可以用一个char 值描述，另外一些Unicode 字符则需要两个char 值。</p>
+<p>char 类型的字面量值要用单引号括起来。例如：’ A’是编码值为65 所对应的字符常量。它与” A”不同，”A”是包含一个字符A 的字符串。char 类型的值可以表示为十六进制值，其范围从＼uOOOO 到＼Uffff。例如： ＼ u2122 表示注册符号（™）， \u03CO 表示希腊字母π。</p>
+<table>
+<thead>
+<tr>
+<th>转义序列</th>
+<th>名称</th>
+<th>Unicode值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\b</td>
+<td>退格</td>
+<td>\u0008</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表</td>
+<td>\u0009</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+<td>\u000a</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+<td>\u000d</td>
+</tr>
+<tr>
+<td>\“</td>
+<td>双引号</td>
+<td>\u0022</td>
+</tr>
+<tr>
+<td>\‘</td>
+<td>单引号</td>
+<td>\u0027</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>反斜杠</td>
+<td>\u005c</td>
+</tr>
+</tbody></table>
+<h3 id="boole类型"><a href="#boole类型" class="headerlink" title="boole类型"></a>boole类型</h3><p>boolean （布尔）类型有两个值： false 和true ，用来判定逻辑条件。整型值和布尔值之间不能进行相五转换。</p>
+<p>在java中，不能用0代替false，用非0值代替true，所以<code>if(x=0)</code>是不能编译通过的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs j">int x &#x3D; 1;<br>while(x)&#123;&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>在Java 中，每个变量都有一个类型（ type ） 。在声明变量时，变量的类型位于变量名之<br>前。这里列举一些声明变量的示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">double</span> salary;<br><span class="hljs-keyword">int</span> vacationDays;<br><span class="hljs-keyword">long</span> earthPopuation;<br><span class="hljs-keyword">boolean</span> done;<br></code></pre></td></tr></table></figure>
+<p>可以看到，每个声明以分号结束。由于声明是一条完整的Java 语句，所以必须以分号结束。</p>
+<p>变量名必须是一个以字母开头并由字母或数字构成的序列。需要注意，与大多数程序设计语言相比， Java 中“字母”和“数字”的范围更大。字母包括’A’～’z·~ ‘a’ - ‘z ’、” 、’$’或在某种语言中表示字母的任何Unicode 字符</p>
+<h3 id="变量初始化"><a href="#变量初始化" class="headerlink" title="变量初始化"></a>变量初始化</h3><p>声明一个变量之后，必须用赋值语句对变量进行显式初始化，千万不要使用未初始化的<br>变量。例如， Java 编译器认为下面的语句序列是错误的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">int</span> vacationDays;<br>System.out.println(vacationDays); <span class="hljs-comment">//未对变量进行赋值，报错</span><br></code></pre></td></tr></table></figure>
+<p>在java中，不区别变量的声明和注释，</p>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>在java中，利用<code>final</code>关键字指示常量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// java中的变量和常量</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Var</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">final</span> <span class="hljs-keyword">double</span> CM_PER_INCH = <span class="hljs-number">2.54</span>;<br>        <span class="hljs-keyword">double</span> paparWidth = <span class="hljs-number">8.5</span>;<br>        <span class="hljs-keyword">double</span> paperHeight = <span class="hljs-number">11</span>;<br>        System.out.println(<span class="hljs-string">&quot;Paper Size in centimers:&quot;</span>+paparWidth*CM_PER_INCH+paperHeight*CM_PER_INCH);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>关键字final表示这个变量只能被赋值一次。一旦被赋值之后，就不能修改了。习惯上，常量名使用全大写</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>在Java 中，使用算术运算符＋、－ 、＊、／表示加、减、乘、除运算。当参与／运算的两个操作数都是整数时，表示整数除法；否则，表示浮点除法。整数的求余操作（有时称为取模）用%表示。例如， 15/2 等于7’ 15%2 等于1, 15.0/2 等于7 . 5 。</p>
+<h3 id="数学函数与常量"><a href="#数学函数与常量" class="headerlink" title="数学函数与常量"></a>数学函数与常量</h3><p>在Math类中，包含着许多数学函数，例如平方根，求幂等</p>
+<h3 id="数值之家的类型转换"><a href="#数值之家的类型转换" class="headerlink" title="数值之家的类型转换"></a>数值之家的类型转换</h3><p>当使用上面两个数值进行二元操作时（例如n + f, n 是整数， f 是浮点数），先要将两个操作数转换为同一种类型，然后再进俯悖。</p>
+<ul>
+<li>如果两个操作数中有一个是double 类型，另一个操作数就会转换为doubl 巳类型。</li>
+<li>否则，如果其中一个操作数是float 类型，另一个操作数将会转换为float 类型。</li>
+<li>否则，如果其中一个操作数是long 类型，另一个操作数将会转换为long 类型。</li>
+<li>否则，两个操作数都将被转换为int 类型。</li>
+</ul>
+<p><img src="https://www.hualigs.cn/image/60b75bda26aee.jpg" srcset="/img/loading.gif"></p>
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p>和c中的类型转换几乎一模一样</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>Java字符串就是Unicode字符序列，</p>
+<p>但要注意的是，java中的字符串不可以修改单个字符，这点和C中的语法不同</p>
+<h3 id="截取子串"><a href="#截取子串" class="headerlink" title="截取子串"></a>截取子串</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">String greeting = <span class="hljs-string">&quot;hello&quot;</span><br>String s = greeting.substring(<span class="hljs-number">0</span>,<span class="hljs-number">3</span>) <span class="hljs-comment">// hel</span><br></code></pre></td></tr></table></figure>
+<h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><p>和绝大多数的程序设计语言一样，java语言允许使用<code>+</code>进行字符串的拼接</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">String expletive = <span class="hljs-string">&quot;Expletive&quot;</span>;<br>String PG13 = <span class="hljs-string">&quot;deleted&quot;</span>;<br>String message = expletive + PG13<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//通过join方法进行字符串的拼接</span><br>String all = String.join(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-string">&quot;S&quot;</span>,<span class="hljs-string">&quot;M&quot;</span>,<span class="hljs-string">&quot;L&quot;</span>,<span class="hljs-string">&quot;XL&quot;</span>);<br>System.out.println(all);<br></code></pre></td></tr></table></figure>
+<h3 id="判断字符串是否相等"><a href="#判断字符串是否相等" class="headerlink" title="判断字符串是否相等"></a>判断字符串是否相等</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">s.equals(t); <span class="hljs-comment">//判断字符串s和t是否相同//主义不要使用 == 判断两个字符串是否相等//这个只能判断两个字符串是否存储在相同的位置</span><br></code></pre></td></tr></table></figure>
+<h3 id="空串和null串"><a href="#空串和null串" class="headerlink" title="空串和null串"></a>空串和null串</h3><p>空串<code>&quot;&quot;</code>表示长度为0的字符串</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//判断空串的方法if(str.length()==0)//或者if(str.equals(&quot;&quot;))</span><br></code></pre></td></tr></table></figure>
+<p>空串是一个Java 对象，有自己的串长度（ 0 ）和内容（空） 。不过， String 变量还可以存放一个特殊的值，名为null ，这表示目前没有任何对象与该变量关联（关于null 的更多信息请参见第4 章） 。要检查一个字符串是否为null ， 要使用以下条件：<code>if(str != null &amp;&amp; str.length()!=0)</code></p>
+<h3 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h3><p>可以查看API文档，这里不再阐述，不需要机械记忆</p>
+<h3 id="构建字符串"><a href="#构建字符串" class="headerlink" title="构建字符串"></a>构建字符串</h3><p>可以通过StringBuilder类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">StringBuilder builder = <span class="hljs-keyword">new</span> StringBuilder();builder.append(ch);builder.append(str);<br></code></pre></td></tr></table></figure>
+<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//第一步 构建一个ScannerScanner in = new Scanner(System.in)</span><br></code></pre></td></tr></table></figure>
+<h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><p>Java的格式化输出和C语言大致相同</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//System.out.printf(&quot;hello, %s. Next year,you&#x27;ll be d%&quot;,name,age)</span><br></code></pre></td></tr></table></figure>
+<h3 id="文件的输入输出"><a href="#文件的输入输出" class="headerlink" title="文件的输入输出"></a>文件的输入输出</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">Scanner in = <span class="hljs-keyword">new</span> Scanner(Paths.get(<span class="hljs-string">&quot;myfile.txt&quot;</span>),<span class="hljs-string">&quot;UTF-8&quot;</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="Java-的控制语句"><a href="#Java-的控制语句" class="headerlink" title="Java 的控制语句"></a>Java 的控制语句</h2><p>Java 的控制语句与C/C++基本上完全一致</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//声明数组int[] a;//创建数组int[] a = new int[100];</span><br></code></pre></td></tr></table></figure>
+<p>注意：在创建字符串时，所有元素都被初始化为0，boolen数组的元素都会被初始化为false，对象数组的元素则初始化为一个特殊值null</p>
+<p>一旦访问数组发生越界，就会提前终止</p>
+<p>Java中，数组存在另一种访问形式</p>
+<p>for each遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> item:arr1)    System.out.println(item);<br></code></pre></td></tr></table></figure>
+<h3 id="数组拷贝"><a href="#数组拷贝" class="headerlink" title="数组拷贝"></a>数组拷贝</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">int</span>[] arr1 = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">100</span>]<span class="hljs-keyword">int</span>[] arr2 = arr1;<span class="hljs-comment">//但这种属于浅拷贝//即arr1和arr2指向同一段地址值</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://i0.hdslb.com/bfs/album/e0e4f1cd20e2773744074ac9f47c616c1a1824e4.png" srcset="/img/loading.gif"></p>
+<p>如果希望将一个数组的所有值拷贝到一个新的数组中去，就要使用Arrays 类的copyOf 方法：</p>
+<p><code>arr2 = Arrays.copy(arr1,arr1.length)</code></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaSe/">JavaSe</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E5%8C%BA/">学习区</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/06/04/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java面向对象</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/06/02/js%E5%AE%9E%E7%8E%B0%E9%93%BE%E8%A1%A8/">
+                        <span class="hidden-mobile">js实现单链表</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
