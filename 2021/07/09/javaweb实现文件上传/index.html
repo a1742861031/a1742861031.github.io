@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yanbo">
+  <meta name="keywords" content="">
+  <title>JavaWeb - bobooo blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>bobooo blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaWeb">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-09 16:21" pubdate>
+        2021年7月9日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaWeb</h1>
+            
+            <div class="markdown-body">
+              <h2 id="使用类介绍"><a href="#使用类介绍" class="headerlink" title="使用类介绍"></a>使用类介绍</h2><p>注意事项</p>
+<ul>
+<li>为保证服务器安全，上传文件应该放在外界无法访问的目录下，比如放在WEB-INF目录下</li>
+<li>为保证文件覆盖的现象发生，上传文件产生一个唯一的文件名</li>
+<li>限制上传文件的最大值</li>
+<li>可以限制上传文件的类型，在收到上传文件名时，判断后缀名是否合法</li>
+</ul>
+<p>需要用到的类的详解</p>
+<h3 id="ServletFileUpload"><a href="#ServletFileUpload" class="headerlink" title="ServletFileUpload"></a><code>ServletFileUpload</code></h3><p>负责处理上传的文件数据,并将表单中每个输入项封装成一个<code>FileItem</code>对象， 在使用<code>ServletFileUpload</code>对象解析请求时需要<code>DiskFileItemFactory</code>对象。所以，我们需要在进行解析工作前构造好<code>DiskFileItemFactory</code>对象，通过<code>ServletFileUpload</code>对象的构造方法或<code>setFileItemFactory()</code>方法设置<code>ServletFileUpload</code>对象的<code>fileItemFactory</code>属性</p>
+<h3 id="FileItem"><a href="#FileItem" class="headerlink" title="FileItem"></a><code>FileItem</code></h3><p>在HTML页面input 必须有 name <code>&lt;input type=&quot;file&quot; name=&quot;filename&quot;&gt;</code>，表单如果包含一个文件上传输入项的话，这个表单的<code>enctype</code>属性就必须设置为<code>multipart/form-data</code>，在服务器端想获取数据也要通过流</p>
+<h3 id="DiskFileItemFactory"><a href="#DiskFileItemFactory" class="headerlink" title="DiskFileItemFactory"></a><code>DiskFileItemFactory</code></h3><p>将请求消息实体中的每一个项目封装成单独的<code>DiskFileItem</code> (<code>FileItem</code>接口的实现) 对象的任务<br>由 <code>org.apache.commons.fileupload.FileItemFactory </code>接口的默认实现<br><code>org.apache.commons.fileupload.disk.DiskFileItemFactory</code> 来完成。当上传的文件项目比较小时，直接保存在内存中（速度比较快），比较大时，以临时文件的形式，保存在磁盘临时文件夹（虽然速度慢些，但是内存资源是有限的）</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="代码的思路"><a href="#代码的思路" class="headerlink" title="代码的思路"></a>代码的思路</h3><ul>
+<li>判断用户上传的文件是普通的表单还是带文件的表单</li>
+<li>出杨建文件上传保存的路径，推荐将其保存到WEB-INF路径下，这个路径下无法直接通过<code>url</code>进行访问，比较安全</li>
+<li>创建临时路径，如果文件超过了预期大小，则把他放在一个临时的文件中</li>
+<li>创建<code>DiskFileItemFactory</code>对象，设置文件临时路径(<code>setRepository</code>)和大小的限制</li>
+<li>创建<code>ServletFileUpload</code>对象，设置编码格式，当个文件最大值，能够上传文件的大小，监听文件上传进度等</li>
+<li>通过<code>ServletFileUpload</code>对象的<code>parseRequest</code>方法吧前端请求解析，封装成一个<code>FileItem</code>对象，判断上传的文件是普通话的表单还是带文件的表单</li>
+<li>通过<code>FileItem</code>的<code>getName</code>方法获取文件名字并判断是否为空，可以使用<code>UUID</code>保证文件名唯一</li>
+<li>拼接文件真实存在路径，并给每个文件创建一个对应的文件夹</li>
+<li>通过<code>FileItem</code>的<code>getInputStream</code>方法获取文件上传的流，并创建一个文件输出流将文件写入真实保存路径，最后关闭流</li>
+<li>上传成功可将页面转发到新的提示页面</li>
+</ul>
+<h3 id="封装工具类"><a href="#封装工具类" class="headerlink" title="封装工具类"></a>封装工具类</h3><p>我们将获取<code>DiskFileItemFactory</code>对象、<code>ServletFileUpload</code>对象，以及文件保存的方法进行封装</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileUtils</span> </span>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@Description</span>: 返回一个DiskFileItemFactory对象</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@Param</span>: [file]</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span>: org.apache.commons.fileupload.disk.DiskFileItemFactory</span><br><span class="hljs-comment">     **/</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DiskFileItemFactory <span class="hljs-title">getDiskFileItemFactory</span><span class="hljs-params">(File file)</span> </span>&#123;<br>        DiskFileItemFactory factory = <span class="hljs-keyword">new</span> DiskFileItemFactory();<br>        <span class="hljs-comment">//通过这个工厂设置一个缓冲区，当上传的文件大于这个缓冲区的时候，将他放到临时文件中</span><br>        factory.setSizeThreshold(<span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>); <span class="hljs-comment">//缓冲区大小为1M</span><br>        factory.setRepository(file);<span class="hljs-comment">//临时文件保存的目录，需要一个File</span><br>        <span class="hljs-keyword">return</span> factory;<br>    &#125;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@Description</span>: 得到ServletFileUpload对象</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@Param</span>: [factory]</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span>: org.apache.commons.fileupload.servlet.ServletFileUpload</span><br><span class="hljs-comment">     **/</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ServletFileUpload <span class="hljs-title">getServletFileUpload</span><span class="hljs-params">(DiskFileItemFactory factory)</span> </span>&#123;<br>        ServletFileUpload upload = <span class="hljs-keyword">new</span> ServletFileUpload(factory);<br>        <span class="hljs-comment">//监听文件上传进度</span><br>        upload.setProgressListener(<span class="hljs-keyword">new</span> ProgressListener() &#123;<br>            <span class="hljs-comment">//pBytesRead:已经读取到的文件大小</span><br>            <span class="hljs-comment">//pContentLength ： 文件大小</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">long</span> pBytesRead, <span class="hljs-keyword">long</span> pContentLength, <span class="hljs-keyword">int</span> pItems)</span> </span>&#123;<br>                System.out.println(<span class="hljs-string">&quot;总大小：&quot;</span> + pContentLength + <span class="hljs-string">&quot;已上传&quot;</span> + pBytesRead);<br>            &#125;<br>        &#125;);<br>        <span class="hljs-comment">//处理乱码问题</span><br>        upload.setHeaderEncoding(<span class="hljs-string">&quot;utf-8&quot;</span>);<br>        <span class="hljs-comment">//设置单个文件的最大值</span><br>        upload.setFileSizeMax(<span class="hljs-number">1024</span> * <span class="hljs-number">1024</span> * <span class="hljs-number">10</span>);<br>        <span class="hljs-comment">//设置总共能够上传文件的大小</span><br>        upload.setSizeMax(<span class="hljs-number">1024</span> * <span class="hljs-number">1024</span> * <span class="hljs-number">10</span>);<br>        <span class="hljs-keyword">return</span> upload;<br>    &#125;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@Description</span>: 上传文件</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@Param</span>: [upload, request, uploadPath]</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span>: java.lang.String</span><br><span class="hljs-comment">     **/</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">uploadParseRequest</span><span class="hljs-params">(ServletFileUpload upload, HttpServletRequest request, String uploadPath)</span> <span class="hljs-keyword">throws</span> FileUploadException, IOException, IOException </span>&#123;<br>        String msg = <span class="hljs-string">&quot;&quot;</span>;<br>        <span class="hljs-comment">//把前端请求解析，封装成一个FileItem对象</span><br>        List&lt;FileItem&gt; fileItems = upload.parseRequest(request);<br>        <span class="hljs-keyword">for</span> (FileItem fileItem : fileItems) &#123;<br>            <span class="hljs-keyword">if</span> (fileItem.isFormField())&#123;<br>                String name = fileItem.getFieldName();<br>                String value = fileItem.getString(<span class="hljs-string">&quot;UTF-8&quot;</span>);<br>                System.out.println(name+<span class="hljs-string">&quot;:&quot;</span>+value);<br>            &#125;<span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-comment">//****************************处理文件****************************</span><br>                <span class="hljs-comment">//拿到文件名字</span><br>                String uploadFileName = fileItem.getName();<br>                System.out.println(<span class="hljs-string">&quot;上传的文件名：&quot;</span>+uploadFileName);<br>                <span class="hljs-keyword">if</span> (uploadFileName.trim().equals(<span class="hljs-string">&quot;&quot;</span>) || uploadFileName==<span class="hljs-keyword">null</span>)&#123;<br>                    <span class="hljs-keyword">continue</span>;<br>                &#125;<br>                <span class="hljs-comment">//获得上传的文件名</span><br>                String fileName = uploadFileName.substring(uploadFileName.lastIndexOf(<span class="hljs-string">&quot;/&quot;</span>)+<span class="hljs-number">1</span>);<br>                <span class="hljs-comment">//获得文件的后缀名</span><br>                String fileExName = uploadFileName.substring(uploadFileName.lastIndexOf(<span class="hljs-string">&quot;.&quot;</span>)+<span class="hljs-number">1</span>);<br>                <span class="hljs-comment">/*</span><br><span class="hljs-comment">                 * 如果文件后缀名fileExName不是所需的直接return，不进行处理，告诉用户文件类型不对</span><br><span class="hljs-comment">                 * */</span><br>                System.out.println(<span class="hljs-string">&quot;文件信息 [文件名：&quot;</span>+fileName+<span class="hljs-string">&quot;---文件类型&quot;</span>+fileExName+<span class="hljs-string">&quot;]&quot;</span>);<br>                <span class="hljs-comment">//可以使用UUID（唯一识别通用码）保证文件名唯一</span><br>                String uuidPath = UUID.randomUUID().toString();<br>                <span class="hljs-comment">//****************************处理文件完毕****************************</span><br>                <span class="hljs-comment">//真实存在的路径</span><br>                String realPath = uploadPath+<span class="hljs-string">&quot;/&quot;</span>+uuidPath;<br>                <span class="hljs-comment">//给每个文件创建一个对应的文件夹</span><br>                File realPathFile = <span class="hljs-keyword">new</span> File(realPath);<br>                <span class="hljs-keyword">if</span> (!realPathFile.exists())&#123;<br>                    realPathFile.mkdir();<br>                &#125;<br>                <span class="hljs-comment">//****************************存放地址完毕*****************************</span><br>                <span class="hljs-comment">//获得文件上传的流</span><br>                InputStream inputStream = fileItem.getInputStream();<br>                <span class="hljs-comment">//创建一个文件输出流</span><br>                <span class="hljs-comment">//realPath是真实的文件夹</span><br>                FileOutputStream fos = <span class="hljs-keyword">new</span> FileOutputStream(realPath + <span class="hljs-string">&quot;/&quot;</span>+fileName);<br>                <span class="hljs-comment">//创建一个缓冲区</span><br>                <span class="hljs-keyword">byte</span>[] buffer = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>];<br>                <span class="hljs-comment">//判断是否读取完毕</span><br>                <span class="hljs-keyword">int</span> len = <span class="hljs-number">0</span>;<br>                <span class="hljs-keyword">while</span> ((len=inputStream.read(buffer))&gt;<span class="hljs-number">0</span>)&#123;<br>                    fos.write(buffer,<span class="hljs-number">0</span>,len);<br>                &#125;<br>                <span class="hljs-comment">//关闭流</span><br>                fos.close();<br>                inputStream.close();<br>                msg = <span class="hljs-string">&quot;文件上传成功&quot;</span>;<br>                fileItem.delete();<span class="hljs-comment">//上传成功，清除临时文件</span><br>                <span class="hljs-comment">//*************************文件传输完毕**************************</span><br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> msg;<br>    &#125;<br><br></code></pre></td></tr></table></figure>
+<h3 id="上传的Servlet编写"><a href="#上传的Servlet编写" class="headerlink" title="上传的Servlet编写"></a>上传的Servlet编写</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fileUpload</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException, FileUploadException </span>&#123;<br>    <span class="hljs-comment">//判断用户上传的文件是普通表单还是带文件的表单，如果是普通文件直接返回</span><br>    <span class="hljs-keyword">if</span> (!ServletFileUpload.isMultipartContent(req)) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-comment">//创建文件上传保存的路路径，在WEB-INF路径下是安全的，用户无法直接访问上传文件</span><br>    String uploadPath = <span class="hljs-keyword">this</span>.getServletContext().getRealPath(<span class="hljs-string">&quot;/WEB-INF/upload&quot;</span>);<br>    System.out.println(uploadPath);<br>    File uploadFile = <span class="hljs-keyword">new</span> File(uploadPath);<br>    <span class="hljs-keyword">if</span> (!uploadFile.exists()) &#123;<br>        uploadFile.mkdir();<br>    &#125;<br>    <span class="hljs-comment">//临时路径,如果文件好过了预期大小，就把他放到一个临时文件中，过几天自动删除，或者提醒用户转存为永久</span><br>    String tmpPath = <span class="hljs-keyword">this</span>.getServletContext().getRealPath(<span class="hljs-string">&quot;WEB-INF/tmp&quot;</span>);<br>    File file = <span class="hljs-keyword">new</span> File(tmpPath);<br>    <span class="hljs-keyword">if</span> (!file.exists()) &#123;<br>        file.mkdir();<br>    &#125;<br>    <span class="hljs-comment">//处理上传的文件，一般通过流来获取，可以使用request.getInputStream(),原生态的文件上传流获取，十分麻烦</span><br>    <span class="hljs-comment">//建议使用 Apache的文件上传组件来实现，common-fileupload，它需要依赖于 commons-io组件；</span><br>    <span class="hljs-comment">//1、创建DiskFileItemFactory对象，处理文件上传路径或大小的限制</span><br>    DiskFileItemFactory factory = FileUtils.getDiskFileItemFactory(uploadFile);<br>    <span class="hljs-comment">//2、获取ServletFileUpload</span><br>    ServletFileUpload upload = FileUtils.getServletFileUpload(factory);<br>    <span class="hljs-comment">//3、处理上传的文件</span><br><br>    <span class="hljs-keyword">try</span> &#123;<br>        String msg = FileUtils.uploadParseRequest(upload, req, uploadPath);<br>        req.setAttribute(<span class="hljs-string">&quot;msg&quot;</span>, msg);<br>        req.getRequestDispatcher(<span class="hljs-string">&quot;msg.jsp&quot;</span>).forward(req, resp);<br>    &#125; <span class="hljs-keyword">catch</span> (FileUploadException e) &#123;<br>        e.printStackTrace();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="前端编写"><a href="#前端编写" class="headerlink" title="前端编写"></a>前端编写</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;文件上传&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;form action=<span class="hljs-string">&quot;$&#123;pageContext.request.contextPath&#125;/upload.do&quot;</span> method=<span class="hljs-string">&quot;post&quot;</span> enctype=<span class="hljs-string">&quot;multipart/form-data&quot;</span>&gt;<br>    上传用户: &lt;input type=<span class="hljs-string">&quot;text&quot;</span> name=<span class="hljs-string">&quot;username&quot;</span>&gt;&lt;br/&gt;<br>    上传文件：&lt;input type=<span class="hljs-string">&quot;file&quot;</span> name=<span class="hljs-string">&quot;file&quot;</span>&gt;&lt;br/&gt;<br>    &lt;input type=<span class="hljs-string">&quot;submit&quot;</span> value=<span class="hljs-string">&quot;提交&quot;</span>&gt;<br>&lt;/form&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;消息提示&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>$&#123;msg&#125;<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaWeb/">JavaWeb</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E5%8C%BA/">学习区</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/08/JavaWeb/">
+                        <span class="hidden-mobile">JavaWeb</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
