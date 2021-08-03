@@ -1,0 +1,609 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yanbo">
+  <meta name="keywords" content="">
+  <title>springboot-一些高级特性与原理解析 - bobooo blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>bobooo blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="springboot-一些高级特性与原理解析">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-29 16:21" pubdate>
+        2021年7月29日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">springboot-一些高级特性与原理解析</h1>
+            
+            <div class="markdown-body">
+              <h2 id="指标监控"><a href="#指标监控" class="headerlink" title="指标监控"></a>指标监控</h2><h3 id="SpringBoot-Actuator"><a href="#SpringBoot-Actuator" class="headerlink" title="SpringBoot Actuator"></a>SpringBoot Actuator</h3><p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210802150523519.png" srcset="/img/loading.gif" alt="image-20210802150523519"></p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>1、引入starter</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>2、相关配置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"># actuator 监控相关配置<br>management:<br>  endpoints:<br>    enabled-by-default: true # 默认开启所有的监控端点<br>    web:<br>      exposure:<br>        include: &#x27;*&#x27; #暴露所有监控端点<br></code></pre></td></tr></table></figure>
+<p>3、访问<a target="_blank" rel="noopener" href="http://localhost:8080/actuator">http://localhost:8080/actuator</a></p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210802152714195.png" srcset="/img/loading.gif" alt="image-20210802152714195"></p>
+<h4 id="监控端点"><a href="#监控端点" class="headerlink" title="监控端点"></a>监控端点</h4><table>
+<thead>
+<tr>
+<th><code>auditevents</code></th>
+<th>暴露当前应用程序的审核事件信息。需要一个<code>AuditEventRepository组件</code>。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>beans</code></td>
+<td>显示应用程序中所有Spring Bean的完整列表。</td>
+</tr>
+<tr>
+<td><code>caches</code></td>
+<td>暴露可用的缓存。</td>
+</tr>
+<tr>
+<td><code>conditions</code></td>
+<td>显示自动配置的所有条件信息，包括匹配或不匹配的原因。</td>
+</tr>
+<tr>
+<td><code>configprops</code></td>
+<td>显示所有<code>@ConfigurationProperties</code>。</td>
+</tr>
+<tr>
+<td><code>env</code></td>
+<td>暴露Spring的属性<code>ConfigurableEnvironment</code></td>
+</tr>
+<tr>
+<td><code>flyway</code></td>
+<td>显示已应用的所有Flyway数据库迁移。 需要一个或多个<code>Flyway</code>组件。</td>
+</tr>
+<tr>
+<td><code>health</code></td>
+<td>显示应用程序运行状况信息。</td>
+</tr>
+<tr>
+<td><code>httptrace</code></td>
+<td>显示HTTP跟踪信息（默认情况下，最近100个HTTP请求-响应）。需要一个<code>HttpTraceRepository</code>组件。</td>
+</tr>
+<tr>
+<td><code>info</code></td>
+<td>显示应用程序信息。</td>
+</tr>
+<tr>
+<td><code>integrationgraph</code></td>
+<td>显示Spring <code>integrationgraph</code> 。需要依赖<code>spring-integration-core</code>。</td>
+</tr>
+<tr>
+<td><code>loggers</code></td>
+<td>显示和修改应用程序中日志的配置。</td>
+</tr>
+<tr>
+<td><code>liquibase</code></td>
+<td>显示已应用的所有Liquibase数据库迁移。需要一个或多个<code>Liquibase</code>组件。</td>
+</tr>
+<tr>
+<td><code>metrics</code></td>
+<td>显示当前应用程序的“指标”信息。</td>
+</tr>
+<tr>
+<td><code>mappings</code></td>
+<td>显示所有<code>@RequestMapping</code>路径列表。</td>
+</tr>
+<tr>
+<td><code>scheduledtasks</code></td>
+<td>显示应用程序中的计划任务。</td>
+</tr>
+<tr>
+<td><code>sessions</code></td>
+<td>允许从Spring Session支持的会话存储中检索和删除用户会话。需要使用Spring Session的基于Servlet的Web应用程序。</td>
+</tr>
+<tr>
+<td><code>shutdown</code></td>
+<td>使应用程序正常关闭。默认禁用。</td>
+</tr>
+<tr>
+<td><code>startup</code></td>
+<td>显示由<code>ApplicationStartup</code>收集的启动步骤数据。需要使用<code>SpringApplication</code>进行配置<code>BufferingApplicationStartup</code>。</td>
+</tr>
+<tr>
+<td><code>threaddump</code></td>
+<td>执行线程转储。</td>
+</tr>
+</tbody></table>
+<p>最常用的Endpoint</p>
+<ul>
+<li><p><strong>Health：监控状况</strong></p>
+</li>
+<li><p><strong>Metrics：运行时指标</strong></p>
+</li>
+<li><p><strong>Loggers：日志记录</strong></p>
+</li>
+</ul>
+<h4 id="Health-Endpoint"><a href="#Health-Endpoint" class="headerlink" title="Health Endpoint"></a>Health Endpoint</h4><p>健康检查端点，我们一般用于在云平台，平台会定时的检查应用的健康状况，我们就需要Health Endpoint可以为平台返回当前应用的一系列组件健康状况的集合。</p>
+<p>重要的几点：</p>
+<ul>
+<li>health endpoint返回的结果，应该是一系列健康检查后的一个汇总报告</li>
+<li>很多的健康检查默认已经自动配置好了，比如：数据库、redis等</li>
+<li>可以很容易的添加自定义的健康检查机制</li>
+</ul>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/1606908975702-4f9a3208-15ca-4a78-9f76-939ef986db7e.png" srcset="/img/loading.gif" alt="image.png"></p>
+<h4 id="Metrics-Endpoint"><a href="#Metrics-Endpoint" class="headerlink" title="Metrics Endpoint"></a>Metrics Endpoint</h4><p>提供详细的、层级的、空间指标信息，这些信息可以被pull（主动推送）或者push（被动获取）方式得到；</p>
+<ul>
+<li>通过Metrics对接多种监控系统</li>
+<li>简化核心Metrics开发</li>
+<li>添加自定义Metrics或者扩展已有Metrics</li>
+</ul>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/1606909073222-c6e77ca3-4b1c-4f38-a1c6-8614dec4f7bc.png" srcset="/img/loading.gif" alt="image.png"></p>
+<h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><h3 id="环境切换"><a href="#环境切换" class="headerlink" title="环境切换"></a>环境切换</h3><ul>
+<li>默认配置文件  application.yaml；任何时候都会加载</li>
+<li>指定环境配置文件  application-{env}.yaml</li>
+<li>激活指定环境</li>
+<li>配置文件激活</li>
+<li>命令行激活：java -jar xxx.jar –<strong>spring.profiles.active=prod  –person.name=haha</strong></li>
+<li>修改配置文件的任意值，命令行优先**</li>
+<li>默认配置与环境配置同时生效</li>
+<li>同名配置项，profile配置优先</li>
+</ul>
+<p>1、默认配置文件</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># 默认环境配置文件 在这里指定 可以指定生产或者测试 也可以不指定</span><br><span class="hljs-comment"># 应用名称</span><br><span class="hljs-meta">spring.application.name</span>=<span class="hljs-string">adminserver</span><br><span class="hljs-comment"># 应用服务 WEB 访问端口</span><br><span class="hljs-meta">server.port</span>=<span class="hljs-string">8888</span><br><span class="hljs-meta">person.name</span>=<span class="hljs-string">zhangsan</span><br><br><span class="hljs-comment"># 指定为生产环境 默认配置文件和指定环境的配置文件都会生效</span><br><span class="hljs-meta">spring.profiles.active</span>=<span class="hljs-string">prod</span><br><br></code></pre></td></tr></table></figure>
+<p>2、生成配置文件application-prod.yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 生产环境配置文件</span><br><span class="hljs-attr">person:</span><br><span class="hljs-attr">name:</span> <span class="hljs-string">prod-zhangsan</span><br><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">6000</span><br><br></code></pre></td></tr></table></figure>
+<p>3、测试配置文件application-test.yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 生产环境配置文件</span><br><span class="hljs-attr">person:</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">test-zhangsan</span><br><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">1111</span><br><br></code></pre></td></tr></table></figure>
+<p>注意是通过默认配置文件选择该使用哪个配置文件的，<font color="red">默认配置文件和指定的配置文件都会被加载</font></p>
+<h3 id="条件装配"><a href="#条件装配" class="headerlink" title="条件装配"></a>条件装配</h3><p>即在不同的环境中装配不同的bean</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration(proxyBeanMethods = false)</span><br><span class="hljs-meta">@Profile(&quot;prod&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProductionConfiguration</span> </span>&#123;<br><br>    <span class="hljs-comment">// ...</span><br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这里表示该配置类在生成环境才会生效，即设置了<code>spring.profile.active=prod</code></p>
+<h3 id="外部化配置"><a href="#外部化配置" class="headerlink" title="外部化配置"></a>外部化配置</h3><p>常用：<strong>Java属性文件</strong>、<strong>YAML文件</strong>、<strong>环境变量</strong>、<strong>命令行参数</strong>；</p>
+<h4 id="配置文件查找位置"><a href="#配置文件查找位置" class="headerlink" title="配置文件查找位置"></a>配置文件查找位置</h4><p>(1) classpath 根路径</p>
+<p>(2) classpath 根路径下config目录</p>
+<p>(3) jar包当前目录</p>
+<p>(4) jar包当前目录的config目录</p>
+<p>(5) /config子目录的直接子目录</p>
+<p>优先级依次上升</p>
+<h4 id="配置文件加载顺序"><a href="#配置文件加载顺序" class="headerlink" title="配置文件加载顺序"></a>配置文件加载顺序</h4><ul>
+<li>当前jar包内部的application.properties和application.yml</li>
+<li>当前jar包内部的application-{profile}.properties 和 application-{profile}.yml</li>
+<li>引用的外部jar包的application.properties和application.yml</li>
+<li>引用的外部jar包的application-{profile}.properties 和 application-{profile}.yml</li>
+</ul>
+<p><font color="red">指定环境优先，外部有限，后面的可以覆盖前面的同名配置项</font></p>
+<h3 id="自定义starter"><a href="#自定义starter" class="headerlink" title="自定义starter"></a>自定义starter</h3><p>1、创建atguigu-hello-spring-boot-starter（启动器）</p>
+<p>只需要引入bobo-hello-spring-boot-stater-autoconfigure依赖即可</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.bobo<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>bobo-hello-spring-boot-stater-autoconfigure<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>这个模块可以是一个空maven项目</p>
+<p>2、创建atguigu-hello-spring-boot-starter-autoconfigure（自动配置包）</p>
+<p>2.1、创建service以及pojo</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@ConfigurationProperties(&quot;bobo.hello&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloProperties</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String prefix;<br>    <span class="hljs-keyword">private</span> String suffix;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getPrefix</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> prefix;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setPrefix</span><span class="hljs-params">(String prefix)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.prefix = prefix;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getSuffix</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> suffix;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setSuffix</span><span class="hljs-params">(String suffix)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.suffix = suffix;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloService</span> </span>&#123;<br>    <span class="hljs-meta">@Autowired</span><br>    HelloProperties helloProperties;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">sayHello</span><span class="hljs-params">(String username)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> helloProperties.getPrefix() + <span class="hljs-string">&quot;:&quot;</span> + username + <span class="hljs-string">&quot;&gt;&quot;</span> + helloProperties.getSuffix();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>2.2、创建自动配置类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@ConditionalOnMissingBean(HelloService.class)</span><br><span class="hljs-meta">@EnableConfigurationProperties(HelloProperties.class)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloServiceAutoConfiguration</span> </span>&#123;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> HelloService <span class="hljs-title">helloService</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HelloService();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>2.3、在resources-META-INF下的spring.factories下 指定项目启动时需要加载的自动配置包</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210802222246634.png" srcset="/img/loading.gif" alt="image-20210802222246634"></p>
+<p>这样就可以在其他项目中引入这个自定义starter了</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210802222125727.png" srcset="/img/loading.gif" alt="image-20210802222125727"></p>
+<p>使用helloservice这个类</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210802222426643.png" srcset="/img/loading.gif" alt="image-20210802222426643"></p>
+<h2 id="SpringBoot原理"><a href="#SpringBoot原理" class="headerlink" title="SpringBoot原理"></a>SpringBoot原理</h2><h3 id="SpringApplication初始化创建"><a href="#SpringApplication初始化创建" class="headerlink" title="SpringApplication初始化创建"></a>SpringApplication初始化创建</h3><blockquote>
+<ul>
+<li>保存一些信息。</li>
+<li>判定当前应用的类型。ClassUtils。Servlet</li>
+<li><strong>bootstrappers</strong>：初始启动引导器（<strong>List<Bootstrapper>**）：去spring.factories文件中找org.springframework.boot.**Bootstrapper</strong></li>
+<li>找 <strong>ApplicationContextInitializer</strong>；去<strong>spring.factories</strong>找 <strong>ApplicationContextInitializer</strong></li>
+<li>List&lt;ApplicationContextInitializer&lt;?&gt;&gt; <strong>initializer</strong></li>
+<li>找 <strong>ApplicationListener  ；应用监听器。</strong>去spring.factories找 <strong>ApplicationListener</strong></li>
+<li>List&lt;ApplicationListener&lt;?&gt;&gt; <strong>listeners</strong></li>
+</ul>
+</blockquote>
+<p>把一些关键的组件读取出来，保存在SpringApplication里面</p>
+<h3 id="SpringApplication运行流程"><a href="#SpringApplication运行流程" class="headerlink" title="SpringApplication运行流程"></a>SpringApplication运行流程</h3><p>插眼 后期补上</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/springboot/">springboot</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E5%8C%BA/">学习区</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/26/springboot-%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/">
+                        <span class="hidden-mobile">springboot-视图解析与模板引擎</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
