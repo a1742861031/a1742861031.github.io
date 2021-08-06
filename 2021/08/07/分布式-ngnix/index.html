@@ -1,0 +1,519 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yanbo">
+  <meta name="keywords" content="">
+  <title>ngnix入门 - bobooo blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>bobooo blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="ngnix入门">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-07 16:21" pubdate>
+        2021年8月7日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ngnix入门</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Ngnix"><a href="#Ngnix" class="headerlink" title="Ngnix"></a>Ngnix</h1><h2 id="Ngnix简介"><a href="#Ngnix简介" class="headerlink" title="Ngnix简介"></a>Ngnix简介</h2><hr>
+<h3 id="什么是ngnix"><a href="#什么是ngnix" class="headerlink" title="什么是ngnix"></a>什么是ngnix</h3><p><em>Nginx</em> (engine x) 是一个高性能的Http和反向代理web服务器，同时也提供了IMAP/POP3/SMTP服务，能经受高负载的考验，能支持高达50000个并发连接数。</p>
+<h3 id="一些ngnix中的概念"><a href="#一些ngnix中的概念" class="headerlink" title="一些ngnix中的概念"></a>一些ngnix中的概念</h3><h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><p>​    首先需要知道正向代理，如果把局域网外的Internet想象成一个巨大的资源库，则局域网中的客户端要访问Internet，需要通过代理服务器访问，这种代理服务就称为正向代理。这里客户端必须要配置代理服务器才能访问到目标服务器</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210804212411417.png" srcset="/img/loading.gif" alt="image-20210804212411417"></p>
+<p>那什么是反向代理</p>
+<p>​    客户端不需做任何的配置，只需要将请求发送给方向代理服务器，反向代理服务器去选择目标服务器获取数据，饭后将数据返回给客户端。即把真正的服务器隐藏了，客户不知道真实服务器的存在。</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210804212800765.png" srcset="/img/loading.gif" alt="image-20210804212800765"></p>
+<h4 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h4><p>​    增加服务器的数量，然后将请求分发到各个服务器上，将原来请求集中到服务器上的情况改为请求分发到多个服务器上，以增加整体的性能。将负载分发到不同服务器上，称为负载均衡。</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210804213734228.png" srcset="/img/loading.gif" alt="image-20210804213734228"></p>
+<h4 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h4><p>​    为了加快网站的解析速度，可以把动态页面和静态页面部署到不同的服务器上</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210804214539514.png" srcset="/img/loading.gif" alt="image-20210804214539514"></p>
+<h2 id="Ngnix基本使用"><a href="#Ngnix基本使用" class="headerlink" title="Ngnix基本使用"></a>Ngnix基本使用</h2><hr>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>使用ngnix操作命名前提条件：进入ngnix的目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">./ngnix -v # 查看ngnix版本号<br>./ngnix -s stop # 关闭ngnix<br>./ngnix -s reload # 重新加载ngnix<br></code></pre></td></tr></table></figure>
+<h3 id="ngnix配置文件解析"><a href="#ngnix配置文件解析" class="headerlink" title="ngnix配置文件解析"></a>ngnix配置文件解析</h3><p>全局块</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#user  nobody;</span><br><span class="hljs-attr">worker_processes</span>  <span class="hljs-string">1; </span><br><br><span class="hljs-comment">#error_log  logs/error.log;</span><br><span class="hljs-comment">#error_log  logs/error.log  notice;</span><br><span class="hljs-comment">#error_log  logs/error.log  info;</span><br><br><span class="hljs-comment">#pid        logs/nginx.pid;</span><br><br><span class="hljs-comment"># 全局块结束</span><br></code></pre></td></tr></table></figure>
+<p>这个块主要影响ngnix服务器整体运行的一些配置</p>
+<p>worker_processes (工作进程数) 1;  这个值越大，处理并发的性能</p>
+<p>events块</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">events</span> <span class="hljs-string">&#123;</span><br>    <span class="hljs-attr">worker_connections</span>  <span class="hljs-string">1024;</span><br><span class="hljs-attr">&#125;</span><br><span class="hljs-comment"># 上面的设置表示支持的最大连接数</span><br><span class="hljs-comment"># events结束</span><br></code></pre></td></tr></table></figure>
+<p>影响ngnix服务器与用户的网络连接</p>
+<p>http块</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">http</span> <span class="hljs-string">&#123;</span><br>    <span class="hljs-attr">include</span>       <span class="hljs-string">mime.types;</span><br>    <span class="hljs-attr">default_type</span>  <span class="hljs-string">application/octet-stream;</span><br><br><span class="hljs-comment">    #log_format  main  &#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span><br><span class="hljs-comment">    #                  &#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span><br><span class="hljs-comment">    #                  &#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;;</span><br><br><span class="hljs-comment">    #access_log  logs/access.log  main;</span><br><br>    <span class="hljs-attr">sendfile</span>        <span class="hljs-string">on;</span><br><span class="hljs-comment">    #tcp_nopush     on;</span><br><br><span class="hljs-comment">    #keepalive_timeout  0;</span><br>    <span class="hljs-attr">keepalive_timeout</span>  <span class="hljs-string">65;</span><br><br><span class="hljs-comment">    #gzip  on;</span><br><br>    <span class="hljs-attr">server</span> <span class="hljs-string">&#123;</span><br>        <span class="hljs-attr">listen</span>       <span class="hljs-string">80;</span><br>        <span class="hljs-attr">server_name</span>  <span class="hljs-string">42.194.129.172;</span><br>        <span class="hljs-attr">charset</span> <span class="hljs-string">utf-8;</span><br><br><span class="hljs-comment">        #charset koi8-r;</span><br><br><span class="hljs-comment">        #access_log  logs/host.access.log  main;</span><br><br>        <span class="hljs-attr">location</span>  <span class="hljs-string">/ &#123;</span><br>            <span class="hljs-attr">root</span> <span class="hljs-string">/home/www/hexo;</span><br> <span class="hljs-attr">&#125;</span><br><span class="hljs-comment">        #error_page  404              /404.html;</span><br><br><span class="hljs-comment">        # redirect server error pages to the static page /50x.html</span><br><span class="hljs-comment">        #</span><br>        <span class="hljs-attr">error_page</span>   <span class="hljs-string">500 502 503 504  /50x.html;</span><br><br>        <span class="hljs-attr">location</span> = <span class="hljs-string">/50x.html &#123;</span><br>            <span class="hljs-attr">root</span>   <span class="hljs-string">/home/www/hexo/404.html;</span><br>        <span class="hljs-attr">&#125;</span><br><br><span class="hljs-comment">        # proxy the PHP scripts to Apache listening on 127.0.0.1:80</span><br><span class="hljs-comment">        #</span><br><span class="hljs-comment">        #location ~ \.php$ &#123;</span><br><span class="hljs-comment">        #    proxy_pass   http://127.0.0.1;</span><br><span class="hljs-comment">        #&#125;</span><br><br><span class="hljs-comment">        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="hljs-comment">        #</span><br><span class="hljs-comment">        #location ~ \.php$ &#123;</span><br><span class="hljs-comment">        #    root           html;</span><br><span class="hljs-comment">        #    fastcgi_pass   127.0.0.1:9000;</span><br><span class="hljs-comment">        #    fastcgi_index  index.php;</span><br><span class="hljs-comment">        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span><br><span class="hljs-comment">        #    include        fastcgi_params;</span><br><span class="hljs-comment">        #&#125;</span><br><br><span class="hljs-comment">        # deny access to .htaccess files, if Apache&#x27;s document root</span><br><span class="hljs-comment">        # concurs with nginx&#x27;s one</span><br><span class="hljs-comment">        #</span><br><span class="hljs-comment">        #location ~ /\.ht &#123;</span><br><span class="hljs-comment">        #    deny  all;</span><br><span class="hljs-comment">        #&#125;</span><br>    <span class="hljs-attr">&#125;</span><br></code></pre></td></tr></table></figure>
+<p>这个块是配置最频繁的部分</p>
+<h2 id="ngnix-配置实例1-反向代理"><a href="#ngnix-配置实例1-反向代理" class="headerlink" title="ngnix 配置实例1-反向代理"></a>ngnix 配置实例1-反向代理</h2><hr>
+<h3 id="项目1"><a href="#项目1" class="headerlink" title="项目1"></a>项目1</h3><p>通过ngnix反向代理，访问tomcat首页</p>
+<p>安装tomcat，tomcat默认使用的是8080端口号</p>
+<p>ngnix配置文件增加监听端口号</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210804225220650.png" srcset="/img/loading.gif" alt="image-20210804225220650"></p>
+<h3 id="项目2"><a href="#项目2" class="headerlink" title="项目2"></a>项目2</h3><p>使用ngnix反向代理，根据访问的路径跳转到不同端口的服务中</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210806164723192.png" srcset="/img/loading.gif" alt="image-20210806164723192"></p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210806212249430.png" srcset="/img/loading.gif" alt="image-20210806212249430"></p>
+<p>上面是配置location各个符号的规则</p>
+<h2 id="ngnix配置实例2-负载均衡"><a href="#ngnix配置实例2-负载均衡" class="headerlink" title="ngnix配置实例2-负载均衡"></a>ngnix配置实例2-负载均衡</h2><hr>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 实现效果</span><br>浏览器访问ngnix服务器 ngnix将请求分发到8081和8082两个端口上去<br></code></pre></td></tr></table></figure>
+<p>在ngnix配置文件中的http块加入以下配置</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">upstream</span> myserver &#123;<br>     <span class="hljs-attribute">server</span>  <span class="hljs-number">192.168.40.128:8081</span>;<br>     <span class="hljs-attribute">server</span>  <span class="hljs-number">192.168.40.128:8082</span>;<br> &#125;<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>        <span class="hljs-attribute">listen</span>       <span class="hljs-number">80</span>;<br>        <span class="hljs-attribute">server_name</span>  <span class="hljs-number">192.168.40.128</span>;<br><br>        <span class="hljs-comment">#charset koi8-r;</span><br><br>        <span class="hljs-comment">#access_log  logs/host.access.log  main;</span><br><br>        <span class="hljs-attribute">location</span> / &#123;<br>            <span class="hljs-attribute">proxy_pass</span> http://myserver;<br>            <span class="hljs-attribute">root</span>   html;<br>            <span class="hljs-attribute">index</span>  index.html index.htm;<br>        &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>然后在此处添加server映射即可</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 各种负载均衡策略</span><br><span class="hljs-section">## 轮询策略</span><br><span class="hljs-code">	每个请求按时间顺序逐一分配到不同的后端服务器。如果后端服务器宕机，能自动剔除</span><br><span class="hljs-code">## weight</span><br><span class="hljs-code">	在配置时加入权重，根据权重分配</span><br><span class="hljs-code">## iphash</span><br><span class="hljs-code">	在配置时加入`iphash`</span><br><span class="hljs-code">	每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题</span><br><span class="hljs-code">## fair</span><br><span class="hljs-code">	根据后端服务器的响应时间进行分配，响应时间短的优先分配</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210806214939249.png" srcset="/img/loading.gif" alt="image-20210806214939249"></p>
+<p>上图是按权重分配</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210806215138848.png" srcset="/img/loading.gif" alt="image-20210806215138848"></p>
+<p>上图是ip_hash</p>
+<h2 id="ngnix配置实例3-动静分离"><a href="#ngnix配置实例3-动静分离" class="headerlink" title="ngnix配置实例3-动静分离"></a>ngnix配置实例3-动静分离</h2><hr>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>ngnix动静分离简单来书哟就是把动态和静态请求分开，</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210806215547913.png" srcset="/img/loading.gif" alt="image-20210806215547913"></p>
+<p>实现方式</p>
+<ul>
+<li>把静态文件独立成单独的域名，放在独立的服务器上(主流)</li>
+<li>动态文件和静态文件一起发布，通过ngnix进行区分</li>
+</ul>
+<p>目的</p>
+<p>提高请求的效率</p>
+<h3 id="如何配置"><a href="#如何配置" class="headerlink" title="如何配置"></a>如何配置</h3><p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210806221047153.png" srcset="/img/loading.gif" alt="image-20210806221047153"></p>
+<h3 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h3><p>地址栏输入<a target="_blank" rel="noopener" href="http://192.168.40.128:9001/image/1.png%E8%83%BD%E5%A4%9F%E8%AE%BF%E9%97%AE%E5%9B%BE%E7%89%87">http://192.168.40.128:9001/image/1.png能够访问图片</a></p>
+<p>地址栏输入<a target="_blank" rel="noopener" href="http://192.168.40.128:9001/www/a.html%E8%83%BD%E5%A4%9F%E8%AE%BF%E9%97%AE%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2">http://192.168.40.128:9001/www/a.html能够访问静态页面</a></p>
+<h2 id="ngnix配置实例4-配置高可用集群"><a href="#ngnix配置实例4-配置高可用集群" class="headerlink" title="ngnix配置实例4-配置高可用集群"></a>ngnix配置实例4-配置高可用集群</h2><hr>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>如果ngnix服务器宕机了，就无法提供服务了</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210806221649169.png" srcset="/img/loading.gif" alt="image-20210806221649169"></p>
+<p>高可用</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210806222026796.png" srcset="/img/loading.gif" alt="image-20210806222026796"></p>
+<ul>
+<li>需要有两台ngnix服务器</li>
+<li>需要keepalive</li>
+<li>需要虚拟ip</li>
+</ul>
+<h3 id="主机配置"><a href="#主机配置" class="headerlink" title="主机配置"></a>主机配置</h3><p>修改keepalive.conf配置文件</p>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs puppet">! Configuration File for keepalived<br><br><span class="hljs-keyword">global_defs</span> &#123;<br><br>    notification_email &#123;<br><br>        acassen@firewall.loc<br><br>        failover@firewall.loc<br><br>        sysadmin@firewall.loc<br>     &#125;<br><br>        <span class="hljs-keyword">notification_email_from</span> <span class="hljs-keyword">Alexandre</span>.Cassen@firewall.loc<br><br>        smtp_server 192.168.17.129<br><br>        smtp_connect_timeout 30<br><br>        router_id LVS_DEVEL <span class="hljs-comment"># 主机名字</span><br>&#125;<br><br><br>vrrp_script <span class="hljs-keyword">chk_http_port</span> &#123;<br>        script <span class="hljs-string">&quot;/usr/local/src/nginx_check.sh&quot;</span><br>        interval <span class="hljs-number">2</span> <span class="hljs-comment">#（检测脚本执行的间隔）</span><br>        weight <span class="hljs-number">2</span> <span class="hljs-comment"># 权重</span><br>   &#125;<br>        <span class="hljs-keyword">vrrp_instance</span> <span class="hljs-keyword">VI_1</span> &#123;<br>        state MASTER <span class="hljs-comment"># 备份服务器上将 MASTER 改为 BACKUP</span><br>        interface eth1 <span class="hljs-comment"># 网卡</span><br>        virtual_router_id <span class="hljs-number">51</span>  <span class="hljs-comment"># 主、备机的 virtual_router_id 必须相同</span><br>        <span class="hljs-literal">priority</span> <span class="hljs-number">100</span>  <span class="hljs-comment"># 主、备机取不同的优先级，主机值较大，备份机值较小</span><br>        advert_int <span class="hljs-number">1</span><br>        authentication &#123;<br>                <span class="hljs-literal">auth_type</span> PASS<br>                auth_pass <span class="hljs-number">1111</span><br>        &#125;<br><br>        <span class="hljs-keyword">virtual_ipaddress</span> &#123;<br>             <span class="hljs-number">192.168</span>.<span class="hljs-number">77.50</span> <span class="hljs-comment"># VRRP H 虚拟地址</span><br>        &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>在<code>/usr/local/src</code>添加检测脚本：<code>nginx_check.sh</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br>A=`ps -C nginx –no-header | wc -l`<br>if [ $A -eq 0 ];then<br>        /usr/local/nginx/sbin/nginx<br>        sleep 2<br>        if [ `ps -C nginx --no-header |wc -l` -eq 0 ];then<br>            killall keepalived<br>        fi<br>fi<br></code></pre></td></tr></table></figure>
+<h3 id="从机配置"><a href="#从机配置" class="headerlink" title="从机配置"></a>从机配置</h3><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>1、两台服务器启动ngnix和keepalived</p>
+<p>2、通过配置的虚拟ip访问ngnix</p>
+<p>当主服务器挂掉时，自动切换到从属服务器上，继续提供服务</p>
+<h2 id="ngnix原理"><a href="#ngnix原理" class="headerlink" title="ngnix原理"></a>ngnix原理</h2><hr>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210806235035976.png" srcset="/img/loading.gif" alt="image-20210806235035976"></p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210806235133412.png" srcset="/img/loading.gif" alt="image-20210806235133412"></p>
+<p>在ngnix中，有两个进程，master进程和worker进程</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210806235428523.png" srcset="/img/loading.gif" alt="image-20210806235428523"></p>
+<p>一个master多个worker的好处</p>
+<ul>
+<li>可以使用ngnix -s reload进行热部署，当进行热部署时，正在执行任务的worker不会停止服务，会必须执行该任务</li>
+<li> 每个worker来说，是一个独立的进程，不需要加锁，并且当worker宕机，可以继续使用其他worker，高可用</li>
+<li>worker数量和cpu核心数相等适宜</li>
+</ul>
+<p>支持的最大并发数计算(一个并发=一次请求)</p>
+<p>普通的静态访问最大并发数是：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">worker_connections</span> * worker_processes /<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+<p>而如果是 HTTP 作 为反向代理来说，最大并发数量应该是</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">worker_connections</span> * worker_processes/<span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E5%8C%BA/">学习区</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/05/%E5%88%86%E5%B8%83%E5%BC%8F-rabbitmq/">
+                        <span class="hidden-mobile">RabbitMQ入门</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
