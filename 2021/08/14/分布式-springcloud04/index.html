@@ -283,7 +283,7 @@
 <p>2、controller</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//====服务熔断</span><br>  <span class="hljs-meta">@GetMapping(&quot;/payment/circuit/&#123;id&#125;&quot;)</span><br>  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">paymentCircuitBreaker</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span> </span>&#123;<br>      String result = paymentService.paymentCircuitBreaker(id);<br>      log.info(<span class="hljs-string">&quot;****result: &quot;</span> + result);<br>      <span class="hljs-keyword">return</span> result;<br>  &#125;<br></code></pre></td></tr></table></figure>
 <p>当这里一直让id传负数时，达到一定的请求次数后，就算请求恢复成正数，也不能正确访问，多几次正确请求后才能恢复</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>![image-20210815001444948](<a target="_blank" rel="noopener" href="https://gitee.com/zoudacheng_admin/blog_img/raw/master/">https://gitee.com/zoudacheng_admin/blog_img/raw/master/</a> images/image-20210815001444948.png)</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210815002029507.png" srcset="/img/loading.gif" alt="image-20210815002029507"></p>
 <p><strong>熔断类型</strong></p>
 <ul>
 <li>熔断打开：请求不再进行调用当前服务，内部设置时钟一般为MTTR(平均故障处理时间)，当打开时长达到所设时钟则进入半熔断状态。</li>
