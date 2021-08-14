@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.2k 字
+      3.1k 字
     </span>
   
 
@@ -271,7 +271,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PaymentFallbackService</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">PaymentHystrixService</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">paymentInfo_OK</span><span class="hljs-params">(Integer id)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;-----PaymentFallbackService fall back-paymentInfo_OK ,o(╥﹏╥)o&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">paymentInfo_TimeOut</span><span class="hljs-params">(Integer id)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;-----PaymentFallbackService fall back-paymentInfo_TimeOut ,o(╥﹏╥)o&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="服务熔断"><a href="#服务熔断" class="headerlink" title="服务熔断"></a>服务熔断</h2><p>熔断机制是应对雪崩效应的一种微服务链路保护机制。当扇出链路的某个微服务出错不可用或者响应时间太长时，会进行服务的降级，进而熔断该节点微服务的调用，快速返回错误的响应信息。当检测到该节点微服务调用响应正常后，恢复调用链路。</p>
 <p>在Spring Cloud框架里，熔断机制通过Hystrix实现。Hystrix会监控微服务间调用的状况，当失败的调用到一定阈值，缺省是5秒内20次调用失败，就会启动熔断机制。熔断机制的注解是<code>@HystrixCommand</code>。</p>
-<p>![image-20210815001420522](<a target="_blank" rel="noopener" href="https://gitee.com/zoudacheng_admin/blog_img/raw/master/">https://gitee.com/zoudacheng_admin/blog_img/raw/master/</a> images/image-20210815001420522.png)</p>
+<p><img src="https://gitee.com/zoudacheng_admin/blog_img/raw/master/%20images/image-20210815001732433.png" srcset="/img/loading.gif" alt="image-20210815001732433"></p>
 <p>熔断器有3个状态</p>
 <ul>
 <li>关闭</li>
