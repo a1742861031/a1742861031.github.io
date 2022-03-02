@@ -234,16 +234,16 @@
 <li>使用访问令牌，获取保护信息</li>
 <li>认证令牌，返回受保护信息</li>
 </ul>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/22211556/1645283297805-26b3206d-d295-4eb6-80ed-09a0af05464a.png" srcset="/img/loading.gif" alt="img"></p>
-<h2 id="社交登陆完整流程"><a href="#社交登陆完整流程" class="headerlink" title="社交登陆完整流程"></a>社交登陆完整流程</h2><p><img src="https://cdn.nlark.com/yuque/0/2022/png/22211556/1645969157557-8dc26df6-2603-4f8c-878d-e1a248271a82.png" srcset="/img/loading.gif" alt="img"></p>
-<h2 id="分布式Session"><a href="#分布式Session" class="headerlink" title="分布式Session"></a>分布式Session</h2><p><img src="https://cdn.nlark.com/yuque/0/2022/png/22211556/1645974185115-a5df9bc4-741c-4f5e-8368-3f8e0bb795e8.png" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="https://bobo-meeting.oss-cn-beijing.aliyuncs.com/uPic/1645283297805-26b3206d-d295-4eb6-80ed-09a0af05464a.png" srcset="/img/loading.gif" alt="img"></p>
+<h2 id="社交登陆完整流程"><a href="#社交登陆完整流程" class="headerlink" title="社交登陆完整流程"></a>社交登陆完整流程</h2><p><img src="https://bobo-meeting.oss-cn-beijing.aliyuncs.com/uPic/1645969157557-8dc26df6-2603-4f8c-878d-e1a248271a82.png" srcset="/img/loading.gif" alt="img"></p>
+<h2 id="分布式Session"><a href="#分布式Session" class="headerlink" title="分布式Session"></a>分布式Session</h2><p><img src="https://bobo-meeting.oss-cn-beijing.aliyuncs.com/uPic/1645974185115-a5df9bc4-741c-4f5e-8368-3f8e0bb795e8.png" srcset="/img/loading.gif" alt="img"></p>
 <h3 id="session在分布式系统下存在的问题"><a href="#session在分布式系统下存在的问题" class="headerlink" title="session在分布式系统下存在的问题"></a>session在分布式系统下存在的问题</h3><blockquote>
 <p>当用户第一次访问服务器例如进行登陆时会得到一个jsessionId，然后浏览器将这个jsessionId保存到cookie中，以后浏览器每次向服务器发送请求，都会带上这个jsessionId，通过这个就可以访问到服务端的session数据。</p>
 <p>分布式系统存在的问题：分布式系统由于域名不同，会导致session不共享，例如商品服务和认证服务之间的session不能共享，即通过认证系统认证成功后保存登陆成功的用户信息，但是商品服务并不能知道已经登陆成功。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/22211556/1645974149510-8ac8390a-9664-4e26-92bb-e0b537ae804f.png" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="https://bobo-meeting.oss-cn-beijing.aliyuncs.com/uPic/1645974149510-8ac8390a-9664-4e26-92bb-e0b537ae804f.png" srcset="/img/loading.gif" alt="img"></p>
 <p>解决方法：使用分布式session</p>
 </blockquote>
-<h3 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h3><h4 id="session复制"><a href="#session复制" class="headerlink" title="session复制"></a>session复制</h4><p><img src="https://cdn.nlark.com/yuque/0/2022/png/22211556/1645974127029-5159ce6c-a4a4-4989-b883-654c2be60d91.png" srcset="/img/loading.gif" alt="img"></p>
+<h3 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h3><h4 id="session复制"><a href="#session复制" class="headerlink" title="session复制"></a>session复制</h4><p><img src="https://bobo-meeting.oss-cn-beijing.aliyuncs.com/uPic/1645974127029-5159ce6c-a4a4-4989-b883-654c2be60d91.png" srcset="/img/loading.gif" alt="img"></p>
 <blockquote>
 <p>优点</p>
 <ul>
@@ -256,7 +256,7 @@
 <li>大型分布式集群情况下，由于所有的web-server都全量保存数据，所有此方案不可取</li>
 </ul>
 </blockquote>
-<h4 id="客户端存储"><a href="#客户端存储" class="headerlink" title="客户端存储"></a>客户端存储</h4><p><img src="https://cdn.nlark.com/yuque/0/2022/png/22211556/1645974072623-ff23c6b9-cd10-4b13-804d-7dea9a08e5c4.png" srcset="/img/loading.gif" alt="img"></p>
+<h4 id="客户端存储"><a href="#客户端存储" class="headerlink" title="客户端存储"></a>客户端存储</h4><p><img src="https://bobo-meeting.oss-cn-beijing.aliyuncs.com/uPic/1645974072623-ff23c6b9-cd10-4b13-804d-7dea9a08e5c4.png" srcset="/img/loading.gif" alt="img"></p>
 <blockquote>
 <p>优点</p>
 <ul>
@@ -270,7 +270,7 @@
 <li>这种方案不会使用</li>
 </ul>
 </blockquote>
-<h4 id="hash一致性"><a href="#hash一致性" class="headerlink" title="hash一致性"></a>hash一致性</h4><p><img src="https://cdn.nlark.com/yuque/0/2022/png/22211556/1645974027385-dc769554-6594-4048-b901-dd731ff0f0d9.png" srcset="/img/loading.gif" alt="img"></p>
+<h4 id="hash一致性"><a href="#hash一致性" class="headerlink" title="hash一致性"></a>hash一致性</h4><p><img src="https://bobo-meeting.oss-cn-beijing.aliyuncs.com/uPic/1645974027385-dc769554-6594-4048-b901-dd731ff0f0d9.png" srcset="/img/loading.gif" alt="img"></p>
 <blockquote>
 <p>优点</p>
 <ul>
@@ -284,7 +284,7 @@
 <li>如果web-server水平扩展，rehash后的session重新分布，也有一部分用户路由不到正确的session</li>
 </ul>
 </blockquote>
-<h4 id="统一存储"><a href="#统一存储" class="headerlink" title="统一存储"></a>统一存储</h4><p><img src="https://cdn.nlark.com/yuque/0/2022/png/22211556/1645974253602-d529da58-d14b-4ade-a4ed-6c6feee2f504.png" srcset="/img/loading.gif" alt="img"></p>
+<h4 id="统一存储"><a href="#统一存储" class="headerlink" title="统一存储"></a>统一存储</h4><p><img src="https://bobo-meeting.oss-cn-beijing.aliyuncs.com/uPic/1645974253602-d529da58-d14b-4ade-a4ed-6c6feee2f504.png" srcset="/img/loading.gif" alt="img"></p>
 <blockquote>
 <p>优点</p>
 <ul>
@@ -298,7 +298,7 @@
 <li>上面的缺点可以使用SpringSession进行解决</li>
 </ul>
 </blockquote>
-<h4 id="终极解决方案：使用SpringSession-redis"><a href="#终极解决方案：使用SpringSession-redis" class="headerlink" title="终极解决方案：使用SpringSession+redis"></a>终极解决方案：使用SpringSession+redis</h4><p><img src="https://cdn.nlark.com/yuque/0/2022/png/22211556/1645974881781-e2176616-28db-4c4f-ae99-6b150568f9f3.png" srcset="/img/loading.gif" alt="img"></p>
+<h4 id="终极解决方案：使用SpringSession-redis"><a href="#终极解决方案：使用SpringSession-redis" class="headerlink" title="终极解决方案：使用SpringSession+redis"></a>终极解决方案：使用SpringSession+redis</h4><p><img src="https://bobo-meeting.oss-cn-beijing.aliyuncs.com/uPic/1645974881781-e2176616-28db-4c4f-ae99-6b150568f9f3.png" srcset="/img/loading.gif" alt="img"></p>
 <blockquote>
 <p>首先通过SpringSession自定义Session的作用域为整个网站，然后将session存入到redis中，就可以进行session共享</p>
 </blockquote>
@@ -307,7 +307,7 @@
 <p>其他系统，想要登陆都去ssoserver.com进行登陆，登陆成功跳转回来</p>
 <p>只要有一个登陆，其他的都不用登陆</p>
 <p>全系统统一一个sso.sessionid;所有系统的域名可能都不相同</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/22211556/1646046989344-65454d49-2468-4a84-9d56-71a10249650f.png" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="https://bobo-meeting.oss-cn-beijing.aliyuncs.com/uPic/1646046989344-65454d49-2468-4a84-9d56-71a10249650f.png" srcset="/img/loading.gif" alt="img"></p>
 <blockquote>
 </blockquote>
 
